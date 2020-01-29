@@ -1,0 +1,46 @@
+{
+  "name": "data_cansat",
+  "version": "1.0.0",
+  "description": "let it be",
+  "main": "index.js",
+  "dependencies": {
+    "browser-sync": "^2.26.5",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-wait": "0.0.2",
+    "node-sass": "^4.12.0",
+    "three": "^0.112.1",
+    "three-orbitcontrols": "^2.110.3",
+    "unirest": "^0.6.0",
+    "vanillajs-scrollspy": "^2.0.3"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-latest": "^6.24.1",
+    "gulp": "^4.0.2",
+    "webpack": "^4.31.0",
+    "webpack-stream": "^5.2.1",
+    "eslint": "^5.16.0"
+  },
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Iwaniukooo11",
+  "license": "GPL-2.0-only"
+}
