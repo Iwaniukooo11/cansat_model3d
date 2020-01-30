@@ -11,17 +11,17 @@ const material = new THREE.MeshStandardMaterial({
 });
 
 const test_data = [];
-// for (let i = 0; i < 30; i += 1) {
-//   const height = Math.floor(Math.random() * (i * 100 - 50) + 50);
+for (let i = 0; i < 30; i++) {
+  const height = Math.floor(Math.random() * (i * 100 - 25) + 25);
 
-//   const obj = {
-//     height: height,
-//     time: i,
-//     preassure: Math.round(Math.random() * 10, 2)
-//   };
+  const obj = {
+    height: height,
+    time: i,
+    preassure: Math.round(Math.random() * 10, 2)
+  };
 
-//   if (Math.round(Math.random() * 10) !== 3) test_data.push(obj);
-// }
+  if (Math.round(Math.random() * 10) !== 3) test_data.push(obj);
+}
 
 loader.load("../../../assets/fonts/Arial_Regular.typeface.json", font => {
   console.log("here");
@@ -32,7 +32,7 @@ loader.load("../../../assets/fonts/Arial_Regular.typeface.json", font => {
       `height: ${height} preassure: ${preassure} time: ${time}`,
       {
         font: font,
-        size: 0.03,
+        size: 0.04,
         height: 0
       }
     );

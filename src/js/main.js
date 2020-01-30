@@ -1,26 +1,25 @@
 const THREE = require("three");
 
+// three.js
 const OrbitControls = require("three-orbitcontrols");
-const camera = require("./environment/camera/camera");
-const scene = require("./environment/scene/scene");
-const light = require("./environment/light/light");
+const camera = require("./three/environment/camera/camera");
+const scene = require("./three/environment/scene/scene");
+const light = require("./three/environment/light/light");
 
-const cubes = require("./geometry/cube/cube");
-const line = require("./geometry/line/line");
-const skeleton = require("./geometry/skeleton/skeleton");
-const text = require("./geometry/text/text");
+const cubes = require("./three/geometry/cube/cube");
+const line = require("./three/geometry/line/line");
+const skeleton = require("./three/geometry/skeleton/skeleton");
+const text = require("./three/geometry/text/text");
 
 scene.add(light);
 
 cubes.forEach(el => scene.add(el));
 skeleton.forEach(el => scene.add(el));
 scene.add(line);
-// scene.add(text);
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
-document.getElementById("canvas").append(renderer.domElement);
+renderer.setSize(window.innerWidth, window.innerHeight * 0.85);
+document.getElementById("canvas-three").append(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -37,3 +36,12 @@ const animate = () => {
   controls.update();
 };
 animate();
+
+//chart.js
+const Chart = require("chart.js");
+
+const conf_acceleration = require("./chart/charts/acceleration");
+const ctx_acceleration = document.getElementById("canvas-chart-acceleration");
+// console.log(ctx);
+
+const myChart = new Chart(ctx_acceleration, conf_acceleration);
