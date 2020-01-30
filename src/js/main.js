@@ -8,12 +8,14 @@ const light = require("./environment/light/light");
 const cubes = require("./geometry/cube/cube");
 const line = require("./geometry/line/line");
 const skeleton = require("./geometry/skeleton/skeleton");
+const text = require("./geometry/text/text");
 
 scene.add(light);
 
 cubes.forEach(el => scene.add(el));
 skeleton.forEach(el => scene.add(el));
 scene.add(line);
+// scene.add(text);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -25,7 +27,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 controls.enableZoom = true;
 controls.enableKeys = true;
-controls.target = new THREE.Vector3(0, -2, 0);
+controls.target = new THREE.Vector3(1, -2, 0);
 controls.autoRotate = true;
 controls.update();
 
