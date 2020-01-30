@@ -6,8 +6,10 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   5000
 );
-camera.position.set(30, 30, 30);
-camera.lookAt(new THREE.Vector3(0, 0, -100));
+camera.position.set(20, 10, 30);
+camera.zoom = 8;
+camera.lookAt(new THREE.Vector3(10, 0, 0));
 // camera.position.y = -20;
+camera.updateProjectionMatrix();
 
 module.exports = camera;

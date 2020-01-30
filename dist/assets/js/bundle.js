@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);\ncamera.position.set(30, 30, 30);\ncamera.lookAt(new THREE.Vector3(0, 0, -100)); // camera.position.y = -20;\n\nmodule.exports = camera;\n\n//# sourceURL=webpack:///./src/js/environment/camera/camera.js?");
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);\ncamera.position.set(20, 10, 30);\ncamera.zoom = 8;\ncamera.lookAt(new THREE.Vector3(10, 0, 0)); // camera.position.y = -20;\n\ncamera.updateProjectionMatrix();\nmodule.exports = camera;\n\n//# sourceURL=webpack:///./src/js/environment/camera/camera.js?");
 
 /***/ }),
 
@@ -149,7 +149,7 @@ eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/buil
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst square_size = 2; //also in line.js\n// const geometryLine = new THREE.Geometry();\n// const material_line = new THREE.LineBasicMaterial({\n//   color: 0x0000ff,\n//   linewidth: 2\n// });\n\nconst cubes_arr = [];\n\nfor (let i = 4; 1 <= i; i--) {\n  const texture = new THREE.TextureLoader().load(`http://192.168.1.15:3000/assets/images_camera/${i}.png`);\n  texture.encoding = THREE.sRGBEncoding;\n  texture.anisotropy = 16;\n  const material = new THREE.MeshStandardMaterial({\n    color: \"#fff\",\n    map: texture,\n    emissive: \"rgb(255,255,255)\",\n    emissiveIntensity: 0.2 // transparent: true\n\n  }); // const geometryCube = new THREE.BoxGeometry(2, 0.05, 2);\n\n  const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size);\n  const cube = new THREE.Mesh(geometryCube, material);\n  cube.position.set(0, -1 * i, 0);\n  cubes_arr.push(cube);\n} // geometryLine.vertices.push(\n//   new THREE.Vector3(0 - square_size / 2, -1, 0 - square_size / 2)\n// );\n// geometryLine.vertices.push(\n//   new THREE.Vector3(0 - square_size / 2, -4, 0 - square_size / 2)\n// );\n\n\nmodule.exports = cubes_arr;\n\n//# sourceURL=webpack:///./src/js/geometry/cube/cube.js?");
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst square_size = 2; //also in line.js\n\nconst cubes_arr = [];\n\nfor (let i = 4; 1 <= i; i--) {\n  const texture = new THREE.TextureLoader().load(`http://192.168.1.15:3000/assets/images_camera/${i}.png`);\n  texture.encoding = THREE.sRGBEncoding;\n  texture.anisotropy = 16;\n  const material = new THREE.MeshStandardMaterial({\n    color: \"#fff\",\n    map: texture,\n    emissive: \"rgb(255,255,255)\",\n    emissiveIntensity: 0.2 // transparent: true\n\n  }); // const geometryCube = new THREE.BoxGeometry(2, 0.05, 2);\n\n  const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size);\n  const cube = new THREE.Mesh(geometryCube, material);\n  cube.position.set(0, -1 * i, 0);\n  cubes_arr.push(cube);\n}\n\nmodule.exports = cubes_arr;\n\n//# sourceURL=webpack:///./src/js/geometry/cube/cube.js?");
 
 /***/ }),
 
@@ -164,6 +164,17 @@ eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/buil
 
 /***/ }),
 
+/***/ "./src/js/geometry/skeleton/skeleton.js":
+/*!**********************************************!*\
+  !*** ./src/js/geometry/skeleton/skeleton.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst square_size = 2; //also in cube.js\n\nconst line_arr = [];\nconst material_line = new THREE.LineBasicMaterial({\n  color: 0xaaaaaa,\n  linewidth: 1\n});\n\nconst makeNewLine = (x, y) => {\n  const geometryLine = new THREE.Geometry();\n  geometryLine.vertices.push(new THREE.Vector3(x, -1, y));\n  geometryLine.vertices.push(new THREE.Vector3(x, -4, y));\n  line_arr.push(new THREE.Line(geometryLine, material_line));\n};\n\nmakeNewLine(0 - square_size / 2, 0 - square_size / 2);\nmakeNewLine(0 - square_size / 2, 0 + square_size / 2);\nmakeNewLine(0 + square_size / 2, 0 - square_size / 2);\nmakeNewLine(0 + square_size / 2, 0 + square_size / 2);\nmodule.exports = line_arr;\n\n//# sourceURL=webpack:///./src/js/geometry/skeleton/skeleton.js?");
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -171,7 +182,7 @@ eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/buil
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst OrbitControls = __webpack_require__(/*! three-orbitcontrols */ \"./node_modules/three-orbitcontrols/OrbitControls.js\");\n\nconst camera = __webpack_require__(/*! ./environment/camera/camera */ \"./src/js/environment/camera/camera.js\");\n\nconst scene = __webpack_require__(/*! ./environment/scene/scene */ \"./src/js/environment/scene/scene.js\");\n\nconst light = __webpack_require__(/*! ./environment/light/light */ \"./src/js/environment/light/light.js\");\n\nconst cubes = __webpack_require__(/*! ./geometry/cube/cube */ \"./src/js/geometry/cube/cube.js\");\n\nconst line = __webpack_require__(/*! ./geometry/line/line */ \"./src/js/geometry/line/line.js\");\n\nscene.add(light);\ncubes.forEach(el => scene.add(el));\nscene.add(line);\nconst renderer = new THREE.WebGLRenderer();\nrenderer.setSize(window.innerWidth, window.innerHeight);\ndocument.body.appendChild(renderer.domElement);\nconst controls = new OrbitControls(camera, renderer.domElement);\ncontrols.enableDamping = true;\ncontrols.dampingFactor = 0.25;\ncontrols.enableZoom = true;\ncontrols.enableKeys = true; // controls.autoRotate = true;\n\ncontrols.update();\n\nconst animate = () => {\n  requestAnimationFrame(animate);\n  renderer.render(scene, camera);\n  controls.update();\n};\n\nanimate();\n\n//# sourceURL=webpack:///./src/js/main.js?");
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst OrbitControls = __webpack_require__(/*! three-orbitcontrols */ \"./node_modules/three-orbitcontrols/OrbitControls.js\");\n\nconst camera = __webpack_require__(/*! ./environment/camera/camera */ \"./src/js/environment/camera/camera.js\");\n\nconst scene = __webpack_require__(/*! ./environment/scene/scene */ \"./src/js/environment/scene/scene.js\");\n\nconst light = __webpack_require__(/*! ./environment/light/light */ \"./src/js/environment/light/light.js\");\n\nconst cubes = __webpack_require__(/*! ./geometry/cube/cube */ \"./src/js/geometry/cube/cube.js\");\n\nconst line = __webpack_require__(/*! ./geometry/line/line */ \"./src/js/geometry/line/line.js\");\n\nconst skeleton = __webpack_require__(/*! ./geometry/skeleton/skeleton */ \"./src/js/geometry/skeleton/skeleton.js\");\n\nscene.add(light);\ncubes.forEach(el => scene.add(el));\nskeleton.forEach(el => scene.add(el));\nscene.add(line);\nconst renderer = new THREE.WebGLRenderer();\nrenderer.setSize(window.innerWidth, window.innerHeight); // document.body.appendChild(renderer.domElement);\n\ndocument.getElementById(\"canvas\").append(renderer.domElement);\nconst controls = new OrbitControls(camera, renderer.domElement);\ncontrols.enableDamping = true;\ncontrols.dampingFactor = 0.25;\ncontrols.enableZoom = true;\ncontrols.enableKeys = true;\ncontrols.target = new THREE.Vector3(0, -2, 0);\ncontrols.autoRotate = true;\ncontrols.update();\n\nconst animate = () => {\n  requestAnimationFrame(animate);\n  renderer.render(scene, camera);\n  controls.update();\n};\n\nanimate();\n\n//# sourceURL=webpack:///./src/js/main.js?");
 
 /***/ })
 

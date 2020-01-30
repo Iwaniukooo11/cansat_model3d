@@ -1,12 +1,6 @@
 const THREE = require("three");
 const square_size = 2; //also in line.js
 
-// const geometryLine = new THREE.Geometry();
-// const material_line = new THREE.LineBasicMaterial({
-//   color: 0x0000ff,
-//   linewidth: 2
-// });
-
 const cubes_arr = [];
 
 for (let i = 4; 1 <= i; i--) {
@@ -31,12 +25,5 @@ for (let i = 4; 1 <= i; i--) {
   cube.position.set(0, -1 * i, 0);
   cubes_arr.push(cube);
 }
-
-// geometryLine.vertices.push(
-//   new THREE.Vector3(0 - square_size / 2, -1, 0 - square_size / 2)
-// );
-// geometryLine.vertices.push(
-//   new THREE.Vector3(0 - square_size / 2, -4, 0 - square_size / 2)
-// );
 
 module.exports = cubes_arr;
