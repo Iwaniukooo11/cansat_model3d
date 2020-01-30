@@ -28,7 +28,7 @@ controls.dampingFactor = 0.25;
 controls.enableZoom = true;
 controls.enableKeys = true;
 controls.target = new THREE.Vector3(1, -2, 0);
-controls.autoRotate = true;
+// controls.autoRotate = true;
 controls.update();
 
 const animate = () => {
