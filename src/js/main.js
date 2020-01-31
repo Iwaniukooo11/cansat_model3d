@@ -11,6 +11,17 @@ const line = require("./three/geometry/line/line");
 const skeleton = require("./three/geometry/skeleton/skeleton");
 const text = require("./three/geometry/text/text");
 
+const db = require("./database/database");
+
+const ref = db.collection("Serial_Port_Monitor");
+// const ref = db.collection("users");
+// ref.get().then(resp => console.log(resp.data()));
+
+// const ref = db.collection("Serial_Port_Monitor").doc("time: 2 seconds");
+// ref.get().then(resp => console.log(resp));
+// console.log(ref);
+ref.get().then(doc => doc.forEach(el => console.log(el.data()["temperature"])));
+
 scene.add(light);
 
 cubes.forEach(el => scene.add(el));
