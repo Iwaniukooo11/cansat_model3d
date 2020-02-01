@@ -1,26 +1,22 @@
+//todo - require to import
+
 const THREE = require("three");
 
-// three.js
 const OrbitControls = require("three-orbitcontrols");
 const camera = require("./three/environment/camera/camera");
 const scene = require("./three/environment/scene/scene");
 const light = require("./three/environment/light/light");
 
-const cubes = require("./three/geometry/cube/cube");
-const line = require("./three/geometry/line/line");
+import cubes from "./three/geometry/cube/cube";
+import line from "./three/geometry/line/line";
 const skeleton = require("./three/geometry/skeleton/skeleton");
 const text = require("./three/geometry/text/text");
 
-const db = require("./database/database");
+// const db = require("./database/database");
+// const ref = db.collection("Serial_Port_Monitor");
 
-const ref = db.collection("Serial_Port_Monitor");
-// const ref = db.collection("users");
-// ref.get().then(resp => console.log(resp.data()));
-
-// const ref = db.collection("Serial_Port_Monitor").doc("time: 2 seconds");
-// ref.get().then(resp => console.log(resp));
-// console.log(ref);
-ref.get().then(doc => doc.forEach(el => console.log(el.data()["temperature"])));
+import test from "./utils/cansat-data";
+test();
 
 scene.add(light);
 
@@ -37,7 +33,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 controls.enableZoom = true;
 controls.enableKeys = true;
-controls.target = new THREE.Vector3(1, -2, 0);
+controls.target = new THREE.Vector3(1, -2, -1);
 // controls.autoRotate = true;
 controls.update();
 

@@ -3,7 +3,10 @@ const square_size = 2; //also in line.js
 
 const cubes_arr = [];
 
-for (let i = 4; 1 <= i; i--) {
+// const numOfMapLayers = require("../../../utils/data");
+import { numOfMapLayers } from "../../../utils/hand-made-data";
+
+for (let i = numOfMapLayers; 1 <= i; i--) {
   const texture = new THREE.TextureLoader().load(
     `http://192.168.1.15:3000/assets/images_camera/${i}.png`
   );
@@ -26,4 +29,4 @@ for (let i = 4; 1 <= i; i--) {
   cubes_arr.push(cube);
 }
 
-module.exports = cubes_arr;
+export default cubes_arr;
