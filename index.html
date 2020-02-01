@@ -44,12 +44,19 @@
       flex-direction: column;
       align-items: center; */
     }
+
+    #time-input {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
   </style>
 </head>
 
 <body class="main-content">
   <div id="canvas-three"></div>
   <canvas id="canvas-chart-acceleration"></canvas>
+  <input type="range" id='time-input' min='0'>
 </body>
 <!-- <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script> -->
