@@ -1,16 +1,26 @@
-import db from "../database/database";
+import db from '../database/database'
+const fs = require('browserify-fs')
+const ref = db.collection('Serial_Port_Monitor').orderBy('time', 'asc')
 
-const ref = db.collection("Serial_Port_Monitor").orderBy("time", "asc");
+import pseudo_db from '../dev-data/db-data'
 // .doc("time: 2 seconds");
 
 //   .collection("Serial_Port_Monitor");
 
+// const fun = async () => {
+//   let snapshot = await ref.get()
+//   // console.log(fs)
+//   snapshot = snapshot.docs.map(doc => doc.data())
+//   // fs.writeFile('test.txt', 'Pliss', () => console.log('NOW!'))
+//   fs.mkdir('dupa')
+//   // fs.writeFile('./data.json', JSON.stringify(snapshot), 'utf8')
+//   return snapshot
+// }
 const fun = async () => {
-  const snapshot = await ref.get();
-  return snapshot.docs.map(doc => doc.data());
-};
+  return pseudo_db
+}
 
-export default fun;
+export default fun
 
 // const ref = db.collection("users");
 // ref.get().then(resp => console.log(resp.data()));

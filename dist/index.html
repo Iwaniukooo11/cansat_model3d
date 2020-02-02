@@ -45,9 +45,19 @@
       align-items: center; */
     }
 
+    canvas {
+      margin: 5vh 0;
+    }
+
     #time-input {
       position: absolute;
       top: 10%;
+      left: 10%;
+    }
+
+    #time-value {
+      position: absolute;
+      top: 15%;
       left: 10%;
     }
   </style>
@@ -55,8 +65,10 @@
 
 <body class="main-content">
   <div id="canvas-three"></div>
-  <canvas id="canvas-chart-acceleration"></canvas>
-  <input type="range" id='time-input' min='0'>
+  <canvas class="canvas-chart"></canvas>
+  <canvas class="canvas-chart"></canvas>
+  <input type="range" id='time-input' min='1' value='1'>
+  <span id="time-value">0</span>
 </body>
 <!-- <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script> -->

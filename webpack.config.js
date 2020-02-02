@@ -1,29 +1,42 @@
 module.exports = {
-    output: {
-        filename: 'bundle.js',
-    },
+  output: {
+    filename: 'bundle.js'
+  },
 
-    mode: "development",
-    module: {
-        rules: [{
-            test: /\.(js|jsx)$/,
-            exclude: /(node_modules)/,
-            loader: 'babel-loader',
-            query: {
-                presets: [
-                    ["@babel/preset-env", {
-                        "targets": {
-                            "node": "current"
-                        }
-                    }],
-                ],
-            },
-        }, ],
-    },
-    node: {
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        dns: 'empty'
-    }
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  node: 'current'
+                }
+              }
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  //   target: 'node'
+  //   browser: {
+  //     fs: false
+  //   }
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+    // fs: 'mock',
+    // net: 'mock',
+    // tls: 'mock',
+    // dns: 'mock'
+  }
 }
