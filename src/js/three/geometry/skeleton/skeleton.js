@@ -1,13 +1,11 @@
 const THREE = require('three')
-// const square_size = 4; //also in cube.js
-// import { square_size } from '../../../utils/hand-made-data'
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 
 const line_arr = []
 
 const material_line = new THREE.LineBasicMaterial({
   color: 0xaaaaaa,
-  linewidth: 1
+  linewidth: 2
 })
 
 const makeNewLine = (x, y) => {

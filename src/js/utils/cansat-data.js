@@ -7,18 +7,18 @@ import pseudo_db from '../dev-data/db-data'
 
 //   .collection("Serial_Port_Monitor");
 
-// const fun = async () => {
-//   let snapshot = await ref.get()
-//   // console.log(fs)
-//   snapshot = snapshot.docs.map(doc => doc.data())
-//   // fs.writeFile('test.txt', 'Pliss', () => console.log('NOW!'))
-//   fs.mkdir('dupa')
-//   // fs.writeFile('./data.json', JSON.stringify(snapshot), 'utf8')
-//   return snapshot
-// }
 const fun = async () => {
-  return pseudo_db
+  let snapshot = await ref.get()
+  // console.log(fs)
+  snapshot = snapshot.docs.map(doc => doc.data())
+  // fs.writeFile('test.txt', 'Pliss', () => console.log('NOW!'))
+  // fs.mkdir('dupa')
+  // fs.writeFile('./data.json', JSON.stringify(snapshot), 'utf8')
+  return snapshot
 }
+// const fun = async () => {
+//   return pseudo_db
+// }
 
 export default fun
 

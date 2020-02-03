@@ -33,7 +33,7 @@ const func = pseudo_func().then(resp => {
     },
     options: {
       maintainAspectRatio: true,
-      aspectRatio: 4,
+      aspectRatio: 2,
 
       scales: {
         yAxes: [
@@ -79,7 +79,7 @@ const func = pseudo_func().then(resp => {
     },
     options: {
       maintainAspectRatio: true,
-      aspectRatio: 4,
+      aspectRatio: 2,
 
       scales: {
         yAxes: [
@@ -106,7 +106,7 @@ const func = pseudo_func().then(resp => {
   }
 
   // return [height_time, temperature_time]
-  return [temperature_time, height_time]
+  return [height_time, temperature_time]
 })
 console.log(func)
 export default func
