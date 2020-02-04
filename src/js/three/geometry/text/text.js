@@ -94,7 +94,7 @@ function makeLabelCanvas(size, name) {
 cansat_data()
   .then(resp => {
     data_to_arr = [...resp]
-    console.log(data_to_arr)
+    console.log('received data from database: ', data_to_arr)
   })
   .then(() => {
     loader.load('../../../assets/fonts/Arial_Regular.typeface.json', font => {
