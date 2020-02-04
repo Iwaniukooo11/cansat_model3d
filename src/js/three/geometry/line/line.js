@@ -98,11 +98,15 @@ input.addEventListener('input', e => {
   const x_differ =
     layers_coord[part_of_map][0] - layers_coord[part_of_map + 1][0]
 
-  const cube_x = (distanceFromHigherLayer * x_differ) / heightOfLayer
+  const cube_x =
+    layers_coord[part_of_map][0] -
+    (distanceFromHigherLayer * x_differ) / heightOfLayer
 
-  const cube_y = (distanceFromHigherLayer * y_differ) / heightOfLayer
+  const cube_y =
+    layers_coord[part_of_map][2] -
+    (distanceFromHigherLayer * y_differ) / heightOfLayer
 
-  console.log(x_differ)
+  console.log(part_of_map)
   cube.position.set(cube_x, cube_z, cube_y)
   cube.name = 'falling_probe'
   scene.add(cube)

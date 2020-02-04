@@ -106,7 +106,7 @@ cansat_data()
     input.value = 0
 
     input.addEventListener('input', e => {
-      span.textContent = e.target.value
+      span.textContent = `${e.target.value}s`
 
       const objectToRemove = scene.getObjectByName('last_mesh')
       scene.remove(objectToRemove)
