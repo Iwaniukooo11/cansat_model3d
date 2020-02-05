@@ -1,15 +1,13 @@
 const THREE = require('three')
-// const square_size = 4; //also in cube.js
 import {
   square_size,
   image_in_image_data,
   numOfMapLayers
 } from '../../../utils/hand-made-data'
-// import { image_in_image_data } from '../../../utils/hand-made-data'
 
 const input = document.getElementById('time-input')
 const layers_coord = []
-const scene = require('../../environment/scene/scene')
+import scene from '../../environment/scene/scene'
 
 const geometryLine = new THREE.Geometry()
 const material_line = new THREE.LineBasicMaterial({
@@ -29,14 +27,6 @@ for (let i = 0; i < image_in_image_data.length - 1; i++) {
     (square_size * (y + size_next / 2)) / size_curent - square_size / 2
   const vec_z = -1 * (square_size / 2) * (i + 1)
 
-  // geometryLine.vertices.push(
-  //   new THREE.Vector3(
-  //     (square_size * (x + size_next / 2)) / size_curent - square_size / 2,
-  //     // -1 * (i + 1), //!
-  //     -1 * (square_size / 2) * (i + 1),
-  //     (square_size * (y + size_next / 2)) / size_curent - square_size / 2
-  //   )
-  // )
   geometryLine.vertices.push(new THREE.Vector3(vec_x, vec_z, vec_y))
   layers_coord.push([vec_x, vec_z, vec_y, `layer-${i}`])
 }
@@ -44,12 +34,7 @@ for (let i = 0; i < image_in_image_data.length - 1; i++) {
 geometryLine.vertices.push(
   new THREE.Vector3(0, -1 * (square_size / 2) * image_in_image_data.length, 0)
 )
-layers_coord.push([
-  0,
-  -1 * (square_size / 2) * image_in_image_data.length,
-  0,
-  `layer-${image_in_image_data.length}`
-])
+layers_coord.push([0, -1 * (square_size / 2) * image_in_image_data.length, 0])
 
 const line = new THREE.Line(geometryLine, material_line)
 
@@ -58,7 +43,6 @@ const material_cube = new THREE.MeshStandardMaterial({
 })
 const geometry_cube = new THREE.BoxGeometry(0.35, 0.35, 0.35)
 
-console.log(layers_coord)
 input.addEventListener('input', e => {
   const objectToRemove = scene.getObjectByName('falling_probe')
   scene.remove(objectToRemove)
@@ -79,25 +63,16 @@ input.addEventListener('input', e => {
     }
   }
 
-  // console.log(part_of_map, '/', layers_coord.length)
-
-  // const distanceFromHigherLayer = cube_z - layers_coord[part_of_map][1]
   const distanceFromHigherLayer = layers_coord[part_of_map][1] - cube_z
   const heightOfLayer =
     layers_coord[part_of_map][1] - layers_coord[part_of_map + 1][1]
 
-  // const ratio_x =
-  //   distanceFromHigherLayer /
-  //   (layers_coord[part_of_map][1] - layers_coord[part_of_map + 1][1])
-
-  // const ratio_y =
-  //   distanceFromHigherLayer /
-  //   (layers_coord[part_of_map][2] - layers_coord[part_of_map + 1][2])
   const y_differ =
     layers_coord[part_of_map][2] - layers_coord[part_of_map + 1][2]
   const x_differ =
     layers_coord[part_of_map][0] - layers_coord[part_of_map + 1][0]
 
+  // compute from proportions
   const cube_x =
     layers_coord[part_of_map][0] -
     (distanceFromHigherLayer * x_differ) / heightOfLayer

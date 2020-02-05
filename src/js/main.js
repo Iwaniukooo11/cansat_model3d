@@ -1,29 +1,16 @@
-//todo - require to import
-
 const THREE = require('three')
-
 const OrbitControls = require('three-orbitcontrols')
-const camera = require('./three/environment/camera/camera')
-const scene = require('./three/environment/scene/scene')
-const light = require('./three/environment/light/light')
 
-// const fs = require('fs')
+import camera from './three/environment/camera/camera'
+import scene from './three/environment/scene/scene'
+import light from './three/environment/light/light'
 
 import cubes from './three/geometry/cube/cube'
 import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
-// import { square_size } from './utils/hand-made-data'
-
-const text = require('./three/geometry/text/text')
-
-// const db = require("./database/database");
-// const ref = db.collection("Serial_Port_Monitor");
-
-import test from './utils/cansat-data'
-test()
+import text from './three/geometry/text/text'
 
 scene.add(light)
-
 cubes.forEach(el => scene.add(el))
 skeleton.forEach(el => scene.add(el))
 scene.add(line)
@@ -51,20 +38,13 @@ animate()
 //chart.js
 const Chart = require('chart.js')
 
-// const conf_acceleration = require('./chart/charts/acceleration')
-import charts_promise from './chart/charts/acceleration'
-console.log('main', charts_promise)
-const ctx_acceleration = [...document.querySelectorAll('.canvas-chart')]
-// console.log(ctx);
+import charts_promise from './chart/charts/charts'
+const ctx_charts = [...document.querySelectorAll('.canvas-chart')]
 const getCharts = async () => {
   const arr_chart = await charts_promise
-  console.log('ht', arr_chart)
 
   arr_chart.forEach((el, i) => {
-    const myChart = new Chart(ctx_acceleration[i], el)
+    const myChart = new Chart(ctx_charts[i], el)
   })
-  // const myChart = new Chart(ctx_acceleration, height_time)
 }
 getCharts()
-
-// const myChart = new Chart(ctx_acceleration, height_time)

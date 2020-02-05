@@ -1,8 +1,5 @@
-// const numOfMapLayers=4
-
 export const numOfMapLayers = 4
 
-// export const square_size = 4
 export const square_size = 8
 
 export const image_in_image_data = [
@@ -11,5 +8,3 @@ export const image_in_image_data = [
   [44, 28, 120],
   ['last', 'last', 50]
 ]
-
-// export const squareSize = 2;
