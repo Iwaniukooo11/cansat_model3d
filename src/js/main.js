@@ -9,6 +9,7 @@ import cubes from './three/geometry/cube/cube'
 import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
 import text from './three/geometry/text/text'
+import { numOfMapLayers } from './utils/hand-made-data'
 
 scene.add(light)
 cubes.forEach(el => scene.add(el))
@@ -24,7 +25,7 @@ controls.enableDamping = true
 controls.dampingFactor = 0.25
 controls.enableZoom = true
 controls.enableKeys = true
-controls.target = new THREE.Vector3(1, -1 * 8, -1)
+controls.target = new THREE.Vector3(1, -2 * numOfMapLayers, -1)
 // controls.autoRotate = true;
 controls.update()
 

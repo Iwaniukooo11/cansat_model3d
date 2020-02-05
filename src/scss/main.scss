@@ -1,0 +1,36 @@
+@import './input';
+
+// #ff435f
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background-color: #f1f2f6;
+
+    canvas {
+        margin: 5vh 0;
+    }
+
+    #time-input {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: rotate(90deg);
+        transform-origin: 0 0;
+        width: 300px;
+
+    }
+
+    #time-value {
+        position: absolute;
+        top: calc(50% + 300px + 20px);
+        left: 8%;
+        font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 22px;
+        text-align: center;
+    }
+}

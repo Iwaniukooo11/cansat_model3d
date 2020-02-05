@@ -4,7 +4,9 @@ import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 const line_arr = []
 
 const material_line = new THREE.LineBasicMaterial({
-  color: 0xaaaaaa,
+  // color: 0xaaaaaa,
+  color: 0x4c4d4d,
+  // color: 0xff435f,
   linewidth: 2
 })
 

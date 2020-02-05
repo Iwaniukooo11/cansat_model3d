@@ -1,9 +1,7 @@
 const THREE = require('three')
-import { square_size } from '../../../utils/hand-made-data'
+import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 
 const cubes_arr = []
-
-import { numOfMapLayers } from '../../../utils/hand-made-data'
 
 for (let i = numOfMapLayers; 1 <= i; i--) {
   const texture = new THREE.TextureLoader().load(
@@ -16,9 +14,9 @@ for (let i = numOfMapLayers; 1 <= i; i--) {
   const materialCube = new THREE.MeshStandardMaterial({
     color: '#fff',
     map: texture,
-    opacity: 0.92,
+    opacity: 0.95,
     emissive: 'rgb(255,255,255)',
-    emissiveIntensity: 0.25,
+    emissiveIntensity: 0.2,
     transparent: true
   })
 
@@ -26,7 +24,9 @@ for (let i = numOfMapLayers; 1 <= i; i--) {
 
   const geometryEdge = new THREE.EdgesGeometry(geometryCube)
   const materialEdge = new THREE.LineBasicMaterial({
-    color: 0x999999,
+    // color: 0x999999,
+    color: 0x4c4d4d,
+    // color: 0xff435f,
     linewidth: 3
   })
   const wireframe = new THREE.LineSegments(geometryEdge, materialEdge)

@@ -11,8 +11,9 @@ import scene from '../../environment/scene/scene'
 
 const geometryLine = new THREE.Geometry()
 const material_line = new THREE.LineBasicMaterial({
-  color: 0x0000ff,
-  linewidth: 2
+  // color: 0x0000ff,
+  color: 0x5352ed,
+  linewidth: 4
 })
 
 for (let i = 0; i < image_in_image_data.length - 1; i++) {
@@ -39,7 +40,8 @@ layers_coord.push([0, -1 * (square_size / 2) * image_in_image_data.length, 0])
 const line = new THREE.Line(geometryLine, material_line)
 
 const material_cube = new THREE.MeshStandardMaterial({
-  color: '#ff0000'
+  // color: '#ff0000'
+  color: '#ff435f'
 })
 const geometry_cube = new THREE.BoxGeometry(0.35, 0.35, 0.35)
 

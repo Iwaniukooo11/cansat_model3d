@@ -14,7 +14,8 @@ let my_font = null
 const makeLabelCanvas = (size, name) => {
   const borderSize = 2
   const ctx = document.createElement('canvas').getContext('2d')
-  const font = `${size}px Arial`
+  // const font = `${size}px Arial`
+  const font = `${size}px Open Sans`
   ctx.font = font
   const doubleBorderSize = borderSize * 2
   const width = ctx.measureText(name).width + doubleBorderSize + 10
