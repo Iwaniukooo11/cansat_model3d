@@ -58,5 +58,6 @@ getCharts()
 console.log('after_create', Date.now() - start)
 window.onload = () => {
   spinner.classList.add('active')
+  document.body.classList.add('active')
   console.log('END', Date.now() - start)
 }
