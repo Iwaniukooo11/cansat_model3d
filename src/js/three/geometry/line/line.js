@@ -1,13 +1,22 @@
 const THREE = require('three')
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import {
   square_size,
   image_in_image_data,
   numOfMapLayers
 } from '../../../utils/hand-made-data'
+import scene from '../../environment/scene/scene'
+
+let icon = null
+const icon_loader = new OBJLoader()
+icon_loader.load('../../../../assets/3d/cansat_icon.obj', resp => {
+  icon = resp
+  icon.scale.set(0.005, 0.005, 0.005)
+  console.log('ich habe!', icon)
+})
 
 const input = document.getElementById('time-input')
 const layers_coord = []
-import scene from '../../environment/scene/scene'
 
 const geometryLine = new THREE.Geometry()
 const material_line = new THREE.LineBasicMaterial({
@@ -55,7 +64,7 @@ input.addEventListener('input', e => {
   const objectToRemove = scene.getObjectByName('falling_probe')
   scene.remove(objectToRemove)
 
-  const cube = new THREE.Mesh(geometry_cube, material_cube)
+  const cube = icon ? icon : new THREE.Mesh(geometry_cube, material_cube)
 
   const cube_z =
     -1 * (square_size / 2) * numOfMapLayers +

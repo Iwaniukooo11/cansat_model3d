@@ -5,8 +5,8 @@ const cubes_arr = []
 
 for (let i = numOfMapLayers; 1 <= i; i--) {
   const texture = new THREE.TextureLoader().load(
-    // `http://192.168.1.15:3000/assets/images_camera/a-${i}.JPG`
-    `assets/images_camera/a-${i}.JPG`
+    `http://192.168.1.15:3000/assets/images_camera/a-${i}.JPG`
+    // `assets/images_camera/a-${i}.JPG`
   )
 
   texture.encoding = THREE.sRGBEncoding
@@ -15,9 +15,9 @@ for (let i = numOfMapLayers; 1 <= i; i--) {
   const materialCube = new THREE.MeshStandardMaterial({
     color: '#fff',
     map: texture,
-    opacity: 0.95,
+    opacity: 0.98,
     emissive: 'rgb(255,255,255)',
-    emissiveIntensity: 0.2,
+    emissiveIntensity: 0.3,
     transparent: true
   })
 
