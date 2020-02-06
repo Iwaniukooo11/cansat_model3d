@@ -6,7 +6,7 @@ const cubes_arr = []
 for (let i = numOfMapLayers; 1 <= i; i--) {
   const texture = new THREE.TextureLoader().load(
     // `http://192.168.1.15:3000/assets/images_camera/a-${i}.JPG`
-    `assets/images_camera/a-${i}.png`
+    `assets/images_camera/a-${i}.JPG`
   )
 
   texture.encoding = THREE.sRGBEncoding
