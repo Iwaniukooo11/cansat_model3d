@@ -65,6 +65,7 @@ input.addEventListener('input', e => {
   scene.remove(objectToRemove)
 
   const cube = icon ? icon : new THREE.Mesh(geometry_cube, material_cube)
+  console.log('Icon: ', icon)
 
   const cube_z =
     -1 * (square_size / 2) * numOfMapLayers +
