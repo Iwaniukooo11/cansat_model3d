@@ -23,8 +23,10 @@ const func = pseudo_func().then(resp => {
         {
           label: 'height',
           labelString: '#height',
-          backgroundColor: '#1abc9c',
-          borderColor: '#1abc9c',
+          // backgroundColor: '#1abc9c',
+          backgroundColor: '#484d4d',
+          // borderColor: '#1abc9c',
+          borderColor: '#484d4d',
           data: data_y,
           borderWidth: 1,
           fill: false
@@ -69,8 +71,10 @@ const func = pseudo_func().then(resp => {
         {
           label: 'temperature',
           labelString: '#temperature',
-          backgroundColor: '#3498db',
-          borderColor: '#3498db',
+          // backgroundColor: '#3498db',
+          backgroundColor: '#ff435f',
+          // borderColor: '#3498db',
+          borderColor: '#ff435f',
           data: data_y,
           borderWidth: 0,
           fill: false

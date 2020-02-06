@@ -29,7 +29,7 @@ const makeLabelCanvas = (size, name) => {
   ctx.fillStyle = 'transparent'
   ctx.fillRect(0, 0, width, height)
   ctx.fillStyle = 'black'
-  ctx.fillText(name, borderSize, borderSize)
+  ctx.fillText(`${name} bleblebleblebleble`, borderSize, borderSize)
 
   return ctx.canvas
 }
@@ -56,9 +56,49 @@ cansat_data()
 
       const { height, time, pressure } = data_to_arr[e.target.value - 1]
       const name = `height: ${height}m preassure: ${pressure}hPa time: ${time}s`
-
+      // const name = [{ height: height }, { time: time }, { pressure: pressure }]
       const size = 12
+
+      const labelGeometry = new THREE.PlaneBufferGeometry(8, 1)
+
+      const arr_canvas = []
+      // name.forEach((el, i) => {
+      //   const key = Object.keys(el)[0]
+
+      //   const objectToRemove = scene.getObjectByName(`last_mesh-${key}`)
+      //   scene.remove(objectToRemove)
+
+      //   const canvas = makeLabelCanvas(size, el[key])
+      //   console.log(el[key])
+      //   const texture = new THREE.CanvasTexture(canvas)
+      //   texture.minFilter = THREE.LinearFilter
+      //   texture.wrapS = THREE.ClampToEdgeWrapping
+      //   texture.wrapT = THREE.ClampToEdgeWrapping
+
+      //   const labelMaterial = new THREE.MeshBasicMaterial({
+      //     map: texture,
+      //     side: THREE.DoubleSide,
+      //     transparent: true
+      //   })
+
+      //   arr_canvas.push(canvas)
+
+      //   const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
+
+      //   mesh.position.set(
+      //     square_size * 1.25,
+      //     -1 * (square_size / 2) * numOfMapLayers +
+      //       (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000 +
+      //       i,
+      //     0
+      //   )
+
+      //   mesh.name = `last_mesh-${key}`
+      //   scene.add(mesh)
+      // })
+
       const canvas = makeLabelCanvas(size, name)
+
       const texture = new THREE.CanvasTexture(canvas)
       texture.minFilter = THREE.LinearFilter
       texture.wrapS = THREE.ClampToEdgeWrapping
@@ -69,8 +109,6 @@ cansat_data()
         side: THREE.DoubleSide,
         transparent: true
       })
-
-      const labelGeometry = new THREE.PlaneBufferGeometry(8, 1)
 
       const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
 

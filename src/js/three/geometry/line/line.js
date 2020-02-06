@@ -12,7 +12,8 @@ import scene from '../../environment/scene/scene'
 const geometryLine = new THREE.Geometry()
 const material_line = new THREE.LineBasicMaterial({
   // color: 0x0000ff,
-  color: 0x5352ed,
+  // color: 0x5352ed,
+  color: 0xff435f,
   linewidth: 4
 })
 
