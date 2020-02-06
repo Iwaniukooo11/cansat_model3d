@@ -10,8 +10,24 @@
     // z-index: 0;
 }
 
+html {
+    --input-distance: 100px;
+}
+
 body {
-    background-color: #f1f2f6;
+    position: relative;
+
+    // background-color: #f1f2f6;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10vh;
+        width: 100%;
+        background-color: #f1f2f6;
+
+    }
 
     canvas {
         margin: 5vh 0;
@@ -19,7 +35,8 @@ body {
 
     #time-input {
         position: absolute;
-        top: 50%;
+        // top: 50%;
+        top: var(--input-distance);
         left: 10%;
         transform: rotate(90deg);
         transform-origin: 0 0;
@@ -30,7 +47,7 @@ body {
 
     #time-value {
         position: absolute;
-        top: calc(50% + 300px + 20px);
+        top: calc(var(--input-distance) + 300px + 20px);
         left: 8%;
         font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-size: 22px;
