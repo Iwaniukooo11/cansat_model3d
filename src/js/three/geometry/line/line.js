@@ -21,12 +21,17 @@ for (let i = 0; i < image_in_image_data.length - 1; i++) {
   const x = image_in_image_data[i][0]
   const y = image_in_image_data[i][1]
   const size_curent = image_in_image_data[i][2]
-  const size_next = image_in_image_data[i + 1][2]
+  // const size_next = image_in_image_data[i + 1][2]
+  const size_next =
+    size_curent * (image_in_image_data[i + 1][3] / image_in_image_data[i][3])
 
   const vec_x =
     (square_size * (x + size_next / 2)) / size_curent - square_size / 2
+  // (square_size * (x + size_curent / 2)) / size_curent
   const vec_y =
     (square_size * (y + size_next / 2)) / size_curent - square_size / 2
+  // (square_size * (y + size_curent / 2)) / size_curent
+
   const vec_z = -1 * (square_size / 2) * (i + 1)
 
   geometryLine.vertices.push(new THREE.Vector3(vec_x, vec_z, vec_y))
