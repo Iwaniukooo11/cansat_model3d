@@ -7,13 +7,21 @@ import {
 } from '../../../utils/hand-made-data'
 import scene from '../../environment/scene/scene'
 
-let icon = null
+let icon = ''
+
 const icon_loader = new OBJLoader()
-icon_loader.load('../../../../assets/3d/cansat_icon.obj', resp => {
-  icon = resp
-  icon.scale.set(0.005, 0.005, 0.005)
-  console.log('ich habe!', icon)
-})
+icon_loader.load(
+  '../../../../assets/3d/cansat_icon.obj',
+  resp => {
+    icon = resp
+    icon.scale.set(0.005, 0.005, 0.005)
+    console.log('ich habe!', icon)
+  },
+  null,
+  err => console.log('err icon', err),
+  null,
+  err => console.log('err!', err)
+)
 
 const input = document.getElementById('time-input')
 const layers_coord = []
