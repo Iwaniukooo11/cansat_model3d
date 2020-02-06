@@ -1,3 +1,5 @@
+let start = Date.now()
+
 const THREE = require('three')
 const OrbitControls = require('three-orbitcontrols')
 
@@ -10,6 +12,9 @@ import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
 import text from './three/geometry/text/text'
 import { numOfMapLayers } from './utils/hand-made-data'
+
+const spinner = document.querySelector('.spinner')
+console.log(spinner)
 
 scene.add(light)
 cubes.forEach(el => scene.add(el))
@@ -49,3 +54,9 @@ const getCharts = async () => {
   })
 }
 getCharts()
+
+console.log('after_create', Date.now() - start)
+window.onload = () => {
+  spinner.classList.add('active')
+  console.log('END', Date.now() - start)
+}

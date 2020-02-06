@@ -20,6 +20,7 @@ for (let i = numOfMapLayers; 1 <= i; i--) {
     transparent: true
   })
 
+  // console.log('create', Date.now() % 10)
   const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size)
 
   const geometryEdge = new THREE.EdgesGeometry(geometryCube)
