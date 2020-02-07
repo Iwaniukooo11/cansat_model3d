@@ -30,7 +30,7 @@ controls.enableDamping = true
 controls.dampingFactor = 0.25
 controls.enableZoom = true
 controls.enableKeys = true
-controls.target = new THREE.Vector3(1, -2 * numOfMapLayers, -1)
+controls.target = new THREE.Vector3(-1, -2 * numOfMapLayers, -1)
 // controls.autoRotate = true;
 controls.update()
 

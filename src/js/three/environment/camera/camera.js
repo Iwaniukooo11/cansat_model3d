@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(
 )
 camera.position.set(20, 10, 30)
 camera.zoom = 2
-camera.lookAt(new THREE.Vector3(10, 0, 0))
+camera.lookAt(new THREE.Vector3(10, 0, 10))
 camera.updateProjectionMatrix()
 
 export default camera
