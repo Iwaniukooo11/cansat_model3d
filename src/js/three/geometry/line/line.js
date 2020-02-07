@@ -1,5 +1,6 @@
 const THREE = require('three')
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import {
   square_size,
   image_in_image_data,
@@ -9,18 +10,27 @@ import scene from '../../environment/scene/scene'
 
 let icon = ''
 
-const icon_loader = new OBJLoader()
+// const icon_loader = new OBJLoader()
+// icon_loader.load(
+//   '../../../../assets/3d/cansat_icon.obj',
+//   resp => {
+//     icon = resp
+//     icon.scale.set(0.005, 0.005, 0.005)
+//     console.log('ich habe!', icon)
+//   },
+//   null,
+//   err => console.log('err icon', err)
+// )
+const icon_loader = new GLTFLoader()
 icon_loader.load(
-  '../../../../assets/3d/cansat_icon.obj',
+  '../../../../assets/3d/cansat_icon.glb',
   resp => {
-    icon = resp
+    icon = resp.scene
     icon.scale.set(0.005, 0.005, 0.005)
     console.log('ich habe!', icon)
   },
   null,
-  err => console.log('err icon', err),
-  null,
-  err => console.log('err!', err)
+  err => console.log('err icon', err)
 )
 
 const input = document.getElementById('time-input')
