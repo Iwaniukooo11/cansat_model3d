@@ -25,11 +25,13 @@ const makeLabelCanvas = (size, name) => {
 
   ctx.font = font
   ctx.textBaseline = 'top'
+  ctx.textAlign = 'left'
 
   ctx.fillStyle = 'transparent'
   ctx.fillRect(0, 0, width, height)
   ctx.fillStyle = 'black'
-  ctx.fillText(`${name} bleblebleblebleble`, borderSize, borderSize)
+  // ctx.fillText(`${name} aleblebleblebleble`, borderSize, borderSize)
+  ctx.fillText(`${name}`, borderSize, borderSize)
 
   return ctx.canvas
 }
@@ -50,75 +52,92 @@ cansat_data()
 
     input.addEventListener('input', e => {
       span.textContent = `${e.target.value}s`
-
       const objectToRemove = scene.getObjectByName('last_mesh')
       scene.remove(objectToRemove)
 
       const { height, time, pressure } = data_to_arr[e.target.value - 1]
-      const name = `height: ${height}m preassure: ${pressure}hPa time: ${time}s`
-      // const name = [{ height: height }, { time: time }, { pressure: pressure }]
+      // const name = `height: ${height}m preassure: ${pressure}hPa time: ${time}s`
+      const name = [
+        { pressure: pressure, unit: 'hPa' },
+        { time: time, unit: 's' },
+        { height: height, unit: 'm' }
+      ]
       const size = 12
 
-      const labelGeometry = new THREE.PlaneBufferGeometry(8, 1)
-
+      // const labelGeometry = new THREE.PlaneBufferGeometry(8, 1)
+      let i = -1
       const arr_canvas = []
       // name.forEach((el, i) => {
-      //   const key = Object.keys(el)[0]
+      for (const el of name) {
+        // if (i == 0) return 0
+        const key = Object.keys(el)[0]
+        const content = `${key}: ${el[key]} ${el['unit']}`
 
-      //   const objectToRemove = scene.getObjectByName(`last_mesh-${key}`)
-      //   scene.remove(objectToRemove)
+        i++
+        const labelGeometry = new THREE.PlaneBufferGeometry(
+          parseInt(content.length / 4) + 1,
+          // 6,
+          1
+        )
 
-      //   const canvas = makeLabelCanvas(size, el[key])
-      //   console.log(el[key])
-      //   const texture = new THREE.CanvasTexture(canvas)
-      //   texture.minFilter = THREE.LinearFilter
-      //   texture.wrapS = THREE.ClampToEdgeWrapping
-      //   texture.wrapT = THREE.ClampToEdgeWrapping
+        const objectToRemove = scene.getObjectByName(`last_mesh-${key}`)
+        scene.remove(objectToRemove)
 
-      //   const labelMaterial = new THREE.MeshBasicMaterial({
-      //     map: texture,
-      //     side: THREE.DoubleSide,
-      //     transparent: true
-      //   })
+        // const canvas = makeLabelCanvas(size, el[key])
+        const canvas = makeLabelCanvas(size, content)
 
-      //   arr_canvas.push(canvas)
+        console.log(key)
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.minFilter = THREE.LinearFilter
+        texture.wrapS = THREE.ClampToEdgeWrapping
+        texture.wrapT = THREE.ClampToEdgeWrapping
 
-      //   const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
+        const labelMaterial = new THREE.MeshBasicMaterial({
+          map: texture,
+          side: THREE.DoubleSide,
+          transparent: true
+        })
 
-      //   mesh.position.set(
-      //     square_size * 1.25,
-      //     -1 * (square_size / 2) * numOfMapLayers +
-      //       (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000 +
-      //       i,
-      //     0
-      //   )
+        arr_canvas.push(canvas)
 
-      //   mesh.name = `last_mesh-${key}`
-      //   scene.add(mesh)
+        const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
+
+        mesh.position.set(
+          square_size * 1,
+          -1 * (square_size / 2) * numOfMapLayers +
+            (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000 +
+            i -
+            square_size / numOfMapLayers,
+          0
+        )
+
+        mesh.name = `last_mesh-${key}`
+        scene.add(mesh)
+      }
+      // )
+
+      // const canvas = makeLabelCanvas(size, name)
+
+      // const texture = new THREE.CanvasTexture(canvas)
+      // texture.minFilter = THREE.LinearFilter
+      // texture.wrapS = THREE.ClampToEdgeWrapping
+      // texture.wrapT = THREE.ClampToEdgeWrapping
+
+      // const labelMaterial = new THREE.MeshBasicMaterial({
+      //   map: texture,
+      //   side: THREE.DoubleSide,
+      //   transparent: true
       // })
 
-      const canvas = makeLabelCanvas(size, name)
+      // const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
 
-      const texture = new THREE.CanvasTexture(canvas)
-      texture.minFilter = THREE.LinearFilter
-      texture.wrapS = THREE.ClampToEdgeWrapping
-      texture.wrapT = THREE.ClampToEdgeWrapping
-
-      const labelMaterial = new THREE.MeshBasicMaterial({
-        map: texture,
-        side: THREE.DoubleSide,
-        transparent: true
-      })
-
-      const mesh = new THREE.Mesh(labelGeometry, labelMaterial)
-
-      mesh.position.set(
-        square_size * 1.25,
-        -1 * (square_size / 2) * numOfMapLayers +
-          (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000,
-        0
-      )
-      mesh.name = 'last_mesh'
-      scene.add(mesh)
+      // mesh.position.set(
+      //   square_size * 1.25,
+      //   -1 * (square_size / 2) * numOfMapLayers +
+      //     (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000,
+      //   0
+      // )
+      // mesh.name = 'last_mesh'
+      // scene.add(mesh)
     })
   })
