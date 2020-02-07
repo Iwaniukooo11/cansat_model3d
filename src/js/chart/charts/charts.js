@@ -34,8 +34,10 @@ const func = pseudo_func().then(resp => {
       ]
     },
     options: {
-      maintainAspectRatio: true,
+      // maintainAspectRatio: true,
+      maintainAspectRatio: false,
       aspectRatio: 2,
+      responsive: true,
 
       scales: {
         yAxes: [
@@ -82,7 +84,9 @@ const func = pseudo_func().then(resp => {
       ]
     },
     options: {
-      maintainAspectRatio: true,
+      // maintainAspectRatio: true,
+      maintainAspectRatio: false,
+      responsive: true,
       aspectRatio: 2,
 
       scales: {
