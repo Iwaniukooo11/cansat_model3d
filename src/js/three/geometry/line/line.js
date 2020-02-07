@@ -21,6 +21,7 @@ let icon = ''
 //   null,
 //   err => console.log('err icon', err)
 // )
+
 const icon_loader = new GLTFLoader()
 icon_loader.load(
   '../../../../assets/3d/cansat_icon.glb',
@@ -30,7 +31,13 @@ icon_loader.load(
     console.log('ich habe!', icon)
   },
   null,
-  err => console.log('err icon', err)
+  err => {
+    icon_loader.load('assets/3d/cansat_icon.glb', resp => {
+      icon = resp.scene
+      icon.scale.set(0.005, 0.005, 0.005)
+      console.log('ich habe from err!', icon)
+    })
+  }
 )
 
 const input = document.getElementById('time-input')
