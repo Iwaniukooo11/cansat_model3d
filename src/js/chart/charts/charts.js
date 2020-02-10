@@ -5,11 +5,11 @@
 //   { height: 2600, a: 4 },
 //   { height: 2500, a: 2 }
 // ];
-import pseudo_func from '../../utils/cansat-data'
+import { data_cansat } from '../../utils/cansat-data'
 
 let height_time = null
 
-const func = pseudo_func().then(resp => {
+const func = data_cansat().then(resp => {
   const test_data = resp
 
   let data_x = test_data.map(obj => obj.time)

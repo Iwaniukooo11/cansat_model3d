@@ -1,5 +1,5 @@
 const THREE = require('three')
-import cansat_data from '../../../utils/cansat-data'
+import { data_cansat } from '../../../utils/cansat-data'
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 
 import scene from '../../environment/scene/scene'
@@ -36,10 +36,10 @@ const makeLabelCanvas = (size, name) => {
   return ctx.canvas
 }
 
-cansat_data()
+data_cansat()
   .then(resp => {
     data_to_arr = [...resp]
-    // console.log('received data from database: ', data_to_arr)
+    console.log('received data from database: ')
   })
   .then(() => {
     loader.load('../../../assets/fonts/Arial_Regular.typeface.json', font => {
@@ -86,7 +86,7 @@ cansat_data()
         // const canvas = makeLabelCanvas(size, el[key])
         const canvas = makeLabelCanvas(size, content)
 
-        console.log(key)
+        // console.log(key)
         const texture = new THREE.CanvasTexture(canvas)
         texture.minFilter = THREE.LinearFilter
         texture.wrapS = THREE.ClampToEdgeWrapping

@@ -19,7 +19,7 @@ console.log(spinner)
 scene.add(light)
 cubes.forEach(el => scene.add(el))
 skeleton.forEach(el => scene.add(el))
-scene.add(line)
+// scene.add(line)
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight * 0.85)
