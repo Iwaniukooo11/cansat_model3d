@@ -56,7 +56,8 @@ map_3d()
       // color: 0x0000ff,
       // color: 0x5352ed,
       color: 0xff435f,
-      linewidth: 4
+      // color: 0x05192a,
+      linewidth: 3
     })
 
     for (let i = 0; i < image_in_image_data.length - 1; i++) {

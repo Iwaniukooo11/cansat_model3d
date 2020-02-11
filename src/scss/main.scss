@@ -1,5 +1,6 @@
 @import './input';
 @import './spinners';
+@import './header';
 
 // #ff435f
 // #484d4d
@@ -16,16 +17,19 @@
 .canvas-chart {
   max-height: 40vh !important;
   z-index: 20;
+
   @media (min-width: 1024px) {
     max-width: 40vw !important;
+
     &--top {
       position: absolute;
-      top: 0;
+      top: 50px;
       right: 5%;
     }
+
     &--bottom {
       position: absolute;
-      top: 45vh;
+      top: calc(45vh + 50px);
       right: 5%;
     }
   }
@@ -36,6 +40,7 @@ body {
     position: relative;
     background-color: #f1f2f6;
   }
+
   #canvas-three {
     @media (min-width: 1024px) {
       transform: translateX(-17%);
