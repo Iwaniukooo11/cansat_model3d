@@ -1,10 +1,3 @@
-// const test_data = [
-//   { height: 3000, a: 10 },
-//   { height: 2800, a: 8 },
-//   { height: 2700, a: 5 },
-//   { height: 2600, a: 4 },
-//   { height: 2500, a: 2 }
-// ];
 import { data_cansat } from '../../utils/cansat-data'
 
 let height_time = null
@@ -113,8 +106,6 @@ const func = data_cansat().then(resp => {
     }
   }
 
-  // return [height_time, temperature_time]
   return [height_time, temperature_time]
 })
-console.log(func)
 export default func

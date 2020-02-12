@@ -15,8 +15,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // position: relative;
-  // z-index: 0;
   outline: none;
 }
 
@@ -53,7 +51,6 @@ body {
     }
   }
 
-  // background-color: #f1f2f6;
   &.active {
     &::before {
       content: '';
@@ -73,7 +70,6 @@ body {
   #time-input {
     position: absolute;
     top: 50%;
-    // top: var(--input-distance);
     left: 10%;
     transform: rotate(90deg) translateX(-50%);
     transform-origin: 0 0;
@@ -84,7 +80,6 @@ body {
   #time-value {
     position: absolute;
     transform: translateY(-50%);
-    // top:
     top: calc(50% + 170px + 20px);
     left: 8%;
     font-family: 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;

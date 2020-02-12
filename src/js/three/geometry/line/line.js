@@ -1,11 +1,6 @@
 const THREE = require('three')
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import {
-  square_size,
-  // image_in_image_data,
-  numOfMapLayers
-} from '../../../utils/hand-made-data'
+import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 
 import { map_3d } from '../../../utils/cansat-data'
 import scene from '../../environment/scene/scene'
@@ -15,35 +10,20 @@ let image_in_image_data = []
 map_3d()
   .then(resp => {
     image_in_image_data = [...resp]
-    console.log('after 3d query')
   })
   .then(() => {
-    // const icon_loader = new OBJLoader()
-    // icon_loader.load(
-    //   '../../../../assets/3d/cansat_icon.obj',
-    //   resp => {
-    //     icon = resp
-    //     icon.scale.set(0.005, 0.005, 0.005)
-    //     console.log('ich habe!', icon)
-    //   },
-    //   null,
-    //   err => console.log('err icon', err)
-    // )
-
     const icon_loader = new GLTFLoader()
     icon_loader.load(
       '../../../../assets/3d/cansat_icon.glb',
       resp => {
         icon = resp.scene
         icon.scale.set(0.005, 0.005, 0.005)
-        console.log('ich habe!', icon)
       },
       null,
       err => {
         icon_loader.load('assets/3d/cansat_icon.glb', resp => {
           icon = resp.scene
           icon.scale.set(0.005, 0.005, 0.005)
-          console.log('ich habe from err!', icon)
         })
       }
     )
@@ -53,10 +33,7 @@ map_3d()
 
     const geometryLine = new THREE.Geometry()
     const material_line = new THREE.LineBasicMaterial({
-      // color: 0x0000ff,
-      // color: 0x5352ed,
       color: 0xff435f,
-      // color: 0x05192a,
       linewidth: 3
     })
 
@@ -64,17 +41,14 @@ map_3d()
       const x = image_in_image_data[i][0]
       const y = image_in_image_data[i][1]
       const size_curent = image_in_image_data[i][2]
-      // const size_next = image_in_image_data[i + 1][2]
       const size_next =
         size_curent *
         (image_in_image_data[i + 1][3] / image_in_image_data[i][3])
 
       const vec_x =
         (square_size * (x + size_next / 2)) / size_curent - square_size / 2
-      // (square_size * (x + size_curent / 2)) / size_curent
       const vec_y =
         (square_size * (y + size_next / 2)) / size_curent - square_size / 2
-      // (square_size * (y + size_curent / 2)) / size_curent
 
       const vec_z = -1 * (square_size / 2) * (i + 1)
 
@@ -98,7 +72,6 @@ map_3d()
     const line = new THREE.Line(geometryLine, material_line)
 
     const material_cube = new THREE.MeshStandardMaterial({
-      // color: '#ff0000'
       color: '#ff435f'
     })
     const geometry_cube = new THREE.BoxGeometry(0.35, 0.35, 0.35)
@@ -108,7 +81,6 @@ map_3d()
       scene.remove(objectToRemove)
 
       const cube = icon ? icon : new THREE.Mesh(geometry_cube, material_cube)
-      // console.log('Icon: ', icon)
 
       const cube_z =
         -1 * (square_size / 2) * numOfMapLayers +
@@ -144,12 +116,10 @@ map_3d()
         layers_coord[part_of_map][2] -
         (distanceFromHigherLayer * y_differ) / heightOfLayer
 
-      // console.log(part_of_map)
       cube.position.set(cube_x, cube_z, cube_y)
       cube.name = 'falling_probe'
       scene.add(cube)
     })
 
     scene.add(line)
-    // export default line
   })

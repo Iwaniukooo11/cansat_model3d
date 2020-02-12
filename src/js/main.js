@@ -14,12 +14,10 @@ import text from './three/geometry/text/text'
 import { numOfMapLayers } from './utils/hand-made-data'
 
 const spinner = document.querySelector('.spinner')
-console.log(spinner)
 
 scene.add(light)
 cubes.forEach(el => scene.add(el))
 skeleton.forEach(el => scene.add(el))
-// scene.add(line)
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight * 0.85)
@@ -31,7 +29,7 @@ controls.dampingFactor = 0.25
 controls.enableZoom = true
 controls.enableKeys = true
 controls.target = new THREE.Vector3(-1, -2 * numOfMapLayers, -1)
-// controls.autoRotate = true;
+// controls.autoRotate = true
 controls.update()
 
 const animate = () => {
@@ -55,9 +53,7 @@ const getCharts = async () => {
 }
 getCharts()
 
-console.log('after_create', Date.now() - start)
 window.onload = () => {
   spinner.classList.add('active')
   document.body.classList.add('active')
-  console.log('END', Date.now() - start)
 }
