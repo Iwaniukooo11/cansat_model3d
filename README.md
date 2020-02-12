@@ -27,7 +27,7 @@
   ![Example map with real collected data and images.](readme/model.png)
   Example map with real collected data and images.
 
-  ![Model symbolizing our falling probe.](readme/model.png)
+  ![Model symbolizing our falling probe.](readme/probe.png)
   Model symbolizing our falling probe.
 
 ### Charts
