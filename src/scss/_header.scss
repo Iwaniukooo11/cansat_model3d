@@ -6,10 +6,17 @@
     left: 0;
     top: 0;
     background-color: #05192a;
-    padding-right: 10vw;
+    padding: 0 10vw;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    font-family: 'Gravedigger', ubuntu, arial;
+    font-size: 7px;
+    color: #fff;
+
+    &__h1 {
+        // justify-self: flex-start;
+    }
 
     &__img {
         height: 80%;
@@ -18,5 +25,6 @@
 
     @media(min-width:1200px) {
         height: 65px;
+        font-size: 9px;
     }
 }
