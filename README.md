@@ -42,6 +42,4 @@ One of charts basing on real collected data.
 
 **Mateusz Iwaniuk** as a member of [Project Trailblazer](http://www.project-trailblazer.pl/) Team.
 
-## Live
-
-Live version will be publicly shared after the competition.
+[Live](https://iwaniukooo11.github.io/cansat_model3d/)
