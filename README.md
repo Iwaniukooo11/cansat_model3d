@@ -1,20 +1,47 @@
-# Cansat Data
-3D map created in three.js for CanSat competition
+# CanSat 3D Map
 
-## JS Libraries
-- three.js
-- OrbitControlls..js
+3D Model created for the CanSat competition. It shows images taken from different heights by probe and detects a flight trajectory. Map also contains charts with data received from the probe.
 
-## clone
-When you're hosting page on localhost, don't open **http://localhost:3000/**, but **http://192.168.1.15:3000/** (because of textures load)
+## Used technologies
+
+- JS Libraries:
+  - Three.js (building model)
+  - OrbitControlls.js (rotating a model)
+  - Chart.js (showing charts)
+- CSS Libraries:
+  - loading io (loading spinner)
+- Tools:
+  - Gulp
+  - Webpack
+  - Eslinter
+  - Prettier
+- Database:
+
+  - Firestore
+
+  ## Practice usage
+
+  ### 3D Map
+
+  The main task of Model 3D is to show the pictures coming from [Image finder algorithm](https://github.com/Iwaniukooo11/image-finder). It works perfect with the use of three.js. Thanks the config about coordinates of red rectangle coming from database, there is automatically building a line showing the flight trajectory. It is possible to select a second from the free fall of probe and see some data, which were collected and the CanSat position at this time.
+  ![Example map with real collected data and images.](readme/model.png)
+  Example map with real collected data and images.
+
+  ![Model symbolizing our falling probe.](readme/model.png)
+  Model symbolizing our falling probe.
+
+### Charts
+
+Depending on the size of using device, charts can appear on the right side or under the map.
+Each chart represents some part of data collected by CanSat. It is possible to hover the line and see more detailed informations about data from specific part of time.
+
+![One of charts basing on real collected data](readme/chart.png)
+One of charts basing on real collected data.
 
 ## Author
-Mateusz Iwaniuk
 
-### Live
-Page hasn't been already officially deployed.
+**Mateusz Iwaniuk** as a member of [Project Trailblazer](http://www.project-trailblazer.pl/) Team.
 
+## Live
 
-
-
-
+Live version will be publicly shared after the competition.
