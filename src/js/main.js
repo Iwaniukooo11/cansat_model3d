@@ -43,9 +43,12 @@ animate()
 const Chart = require('chart.js')
 
 import charts_promise from './chart/charts/charts'
+import vertical_line from './chart/plugins/vertical-line'
+let arr_chart = []
 const ctx_charts = [...document.querySelectorAll('.canvas-chart')]
 const getCharts = async () => {
-  const arr_chart = await charts_promise
+  // const arr_chart = await charts_promise
+  arr_chart = await charts_promise
 
   arr_chart.forEach((el, i) => {
     const myChart = new Chart(ctx_charts[i], el)
@@ -57,3 +60,12 @@ window.onload = () => {
   spinner.classList.add('active')
   document.body.classList.add('active')
 }
+const input = document.querySelector('.range-input')
+input.addEventListener('input', e => {
+  arr_chart.forEach((el, i) => {
+    const myChart = new Chart(ctx_charts[i], {
+      ...el,
+      lineAtIndex: [e.target.value]
+    })
+  })
+})

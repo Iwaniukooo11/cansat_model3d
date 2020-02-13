@@ -10,6 +10,7 @@ const func = data_cansat().then(resp => {
 
   height_time = {
     type: 'line',
+    // lineAtIndex: [20, 40, 80],
     data: {
       labels: data_x,
       datasets: [
@@ -31,7 +32,9 @@ const func = data_cansat().then(resp => {
       maintainAspectRatio: false,
       aspectRatio: 2,
       responsive: true,
-
+      animation: {
+        duration: 0
+      },
       scales: {
         yAxes: [
           {
@@ -81,6 +84,9 @@ const func = data_cansat().then(resp => {
       maintainAspectRatio: false,
       responsive: true,
       aspectRatio: 2,
+      animation: {
+        duration: 0
+      },
 
       scales: {
         yAxes: [
