@@ -33,7 +33,11 @@
 ### Charts
 
 Depending on the size of using device, charts can appear on the right side or under the map.
-Each chart represents some part of data collected by CanSat. It is possible to hover the part of diagram and see more detailed informations about data from specific part of time. There also appears a vertical line which is resposnsible for showing current selected time.
+Each chart represents some part of data collected by CanSat. It is possible to hover the part of diagram and see more detailed informations about data from specific part of time.
+
+There also appears a vertical line which is resposnsible for showing current selected time.
+
+On the top of the page is located a switcher, thanks what user is able to see both photos coming from Image Finder and Segmentation on the map.
 
 ![One of charts basing on real collected data](readme/chart.png)
 One of charts basing on real collected data.
