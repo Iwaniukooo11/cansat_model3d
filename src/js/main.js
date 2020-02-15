@@ -16,7 +16,7 @@ import { numOfMapLayers } from './utils/hand-made-data'
 const spinner = document.querySelector('.spinner')
 
 scene.add(light)
-cubes.forEach(el => scene.add(el))
+// cubes.forEach(el => scene.add(el))
 skeleton.forEach(el => scene.add(el))
 
 const renderer = new THREE.WebGLRenderer()

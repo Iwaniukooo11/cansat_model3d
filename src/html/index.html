@@ -14,6 +14,7 @@
   <meta property="og:type" content="model.mapa.projekt.sonda.satelita" />
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" />
   <title>Trailblazer 3D Map</title>
@@ -28,6 +29,13 @@
 
   <div class="canvas-three-parent">
     <div id="canvas-three"></div>
+    <div class="onoffswitch checkbox ">
+      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+      <label class="onoffswitch-label " for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch img-in-img"></span>
+      </label>
+    </div>
   </div>
   <canvas class="chart-main canvas-chart canvas-chart--top"></canvas>
   <canvas class="line" width='600' height='400'></canvas>
@@ -35,6 +43,10 @@
 
   <input type="range" id='time-input' class="range-input" min='1' value='1'>
   <span id="time-value">1</span>
+
+
+
+
   <div class="spinner loader lds-facebook">
     <div></div>
     <div></div>

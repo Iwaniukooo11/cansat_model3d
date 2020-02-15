@@ -1,40 +1,63 @@
+//  to do - auto w zaleznosci od switcha
+
 const THREE = require('three')
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
+import scene from '../../environment/scene/scene'
 
 const cubes_arr = []
 
-for (let i = numOfMapLayers; 1 <= i; i--) {
-  const texture = new THREE.TextureLoader().load(
-    `assets/images_camera/a-${i}.JPG`
-  )
+const toggler = document.querySelector('.onoffswitch-switch')
+toggler.addEventListener('click', () => {
+  toggler.classList.toggle('img-in-img')
+  toggler.classList.toggle('segmentation')
+  createCubeLayers()
+})
 
-  texture.encoding = THREE.sRGBEncoding
-  texture.anisotropy = 16
+const createCubeLayers = () => {
+  for (let i = numOfMapLayers; 1 <= i; i--) {
+    const objectToRemove = scene.getObjectByName(`cube-${i}`)
+    scene.remove(objectToRemove)
 
-  const materialCube = new THREE.MeshStandardMaterial({
-    color: '#fff',
-    map: texture,
-    opacity: 0.98,
-    emissive: 'rgb(255,255,255)',
-    emissiveIntensity: 0.3,
-    transparent: true
-  })
+    const folder = toggler.classList.contains('img-in-img')
+      ? 'img_in_img'
+      : 'segmentation'
+    console.log(folder)
 
-  const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size)
+    const texture = new THREE.TextureLoader().load(
+      `assets/images_camera/${folder}/a-${i}.JPG`
+    )
 
-  const geometryEdge = new THREE.EdgesGeometry(geometryCube)
-  const materialEdge = new THREE.LineBasicMaterial({
-    color: 0x4c4d4d,
-    linewidth: 3
-  })
-  const wireframe = new THREE.LineSegments(geometryEdge, materialEdge)
-  wireframe.renderOrder = 1
+    texture.encoding = THREE.sRGBEncoding
+    texture.anisotropy = 16
 
-  const cube = new THREE.Mesh(geometryCube, materialCube)
-  cube.add(wireframe)
+    const materialCube = new THREE.MeshStandardMaterial({
+      color: '#fff',
+      map: texture,
+      opacity: 0.98,
+      emissive: 'rgb(255,255,255)',
+      emissiveIntensity: 0.3,
+      transparent: true
+    })
 
-  cube.position.set(0, -1 * (square_size / 2) * i, 0) //!!
-  cubes_arr.push(cube)
+    const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size)
+
+    const geometryEdge = new THREE.EdgesGeometry(geometryCube)
+    const materialEdge = new THREE.LineBasicMaterial({
+      color: 0x4c4d4d,
+      linewidth: 3
+    })
+    const wireframe = new THREE.LineSegments(geometryEdge, materialEdge)
+    wireframe.renderOrder = 1
+
+    const cube = new THREE.Mesh(geometryCube, materialCube)
+    cube.add(wireframe)
+
+    cube.position.set(0, -1 * (square_size / 2) * i, 0) //!!
+    cube.name = `cube-${i}`
+    // cubes_arr.push(cube)
+    scene.add(cube)
+  }
 }
+createCubeLayers()
 
 export default cubes_arr

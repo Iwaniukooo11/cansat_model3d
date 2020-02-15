@@ -1,5 +1,6 @@
 @import './input';
 @import './spinners';
+@import './toggle';
 
 @font-face {
   font-family: 'Gravedigger';
@@ -10,6 +11,7 @@
 
 // #ff435f
 // #484d4d
+// #05192a
 
 * {
   margin: 0;
@@ -40,6 +42,8 @@
 }
 
 body {
+  font-family: 'OpenSans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+
   .canvas-three-parent {
     position: relative;
     background-color: #f1f2f6;
