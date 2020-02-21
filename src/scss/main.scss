@@ -59,12 +59,22 @@ body {
     position: absolute;
     top: 40px;
     left: 25%;
+    display: none;
+
+    @media(min-width:1200px) {
+      display: block;
+    }
   }
 
   .rotate-label {
     top: calc(40px + 100vh / 5);
     left: 25%;
     position: absolute;
+    display: none;
+
+    @media(min-width:1200px) {
+      display: block;
+    }
   }
 
   &.active {
