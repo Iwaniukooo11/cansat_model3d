@@ -33,9 +33,9 @@ const createCubeLayers = () => {
     const materialCube = new THREE.MeshStandardMaterial({
       color: '#fff',
       map: texture,
-      opacity: 0.98,
+      opacity: 0.9999,
       emissive: 'rgb(255,255,255)',
-      emissiveIntensity: 0.3,
+      emissiveIntensity: 0.2,
       transparent: true
     })
 
