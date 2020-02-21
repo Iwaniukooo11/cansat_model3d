@@ -40,8 +40,9 @@ icon_loader.load(
   null,
   err => {
     icon_loader.load('assets/3d/cansat_icon.glb', resp => {
-      icon = resp.scene
+      const icon = resp.scene
       icon.scale.set(0.005, 0.005, 0.005)
+      callback_function(icon)
     })
   }
 )
