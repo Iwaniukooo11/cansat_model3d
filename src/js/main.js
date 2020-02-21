@@ -12,6 +12,7 @@ import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
 import text from './three/geometry/text/text'
 import { numOfMapLayers } from './utils/hand-made-data'
+import rotate from './three/rotate/index'
 
 const spinner = document.querySelector('.spinner')
 

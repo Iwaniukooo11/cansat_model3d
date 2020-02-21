@@ -55,6 +55,18 @@ body {
     }
   }
 
+  #rotate-three {
+    position: absolute;
+    top: 40px;
+    left: 25%;
+  }
+
+  .rotate-label {
+    top: calc(40px + 100vh / 5);
+    left: 25%;
+    position: absolute;
+  }
+
   &.active {
     &::before {
       content: '';
