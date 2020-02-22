@@ -114,4 +114,15 @@ body {
     text-align: center;
     z-index: 10;
   }
+
+  #rotate-value {
+    position: absolute;
+    transform: translateY(-50%);
+    top: calc(50% + 170px + 70px);
+    left: 8%;
+    font-family: 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    z-index: 10;
+  }
 }

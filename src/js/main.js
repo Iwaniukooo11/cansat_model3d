@@ -12,7 +12,7 @@ import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
 import text from './three/geometry/text/text'
 import { numOfMapLayers } from './utils/hand-made-data'
-import rotate from './three/rotate/index'
+// import rotate from './three/rotate/index'
 
 const spinner = document.querySelector('.spinner')
 
@@ -51,7 +51,7 @@ const getCharts = async () => {
   // const arr_chart = await charts_promise
   arr_chart = await charts_promise
 
-  arr_chart.forEach((el, i) => {
+  arr_chart[0].forEach((el, i) => {
     const myChart = new Chart(ctx_charts[i], el)
   })
 }
@@ -63,10 +63,16 @@ window.onload = () => {
 }
 const input = document.querySelector('.range-input')
 input.addEventListener('input', e => {
-  arr_chart.forEach((el, i) => {
+  //   //coppied from cube.js
+  //   const z=(height * (square_size / 2) * (numOfMapLayers - 1)) /
+  //   data_to_arr[0].height +
+  // i -
+  // square_size / numOfMapLayers,
+
+  arr_chart[0].forEach((el, i) => {
     const myChart = new Chart(ctx_charts[i], {
       ...el,
-      lineAtIndex: [e.target.value]
+      lineAtIndex: [e.target.value - 1]
     })
   })
 })

@@ -2,14 +2,23 @@ const THREE = require('three')
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 
-import { map_3d } from '../../../utils/cansat-data'
+import { map_3d, data_cansat } from '../../../utils/cansat-data'
 import scene from '../../environment/scene/scene'
+
+const label_rotate = document.querySelector('#rotate-value')
 
 let icon = ''
 let image_in_image_data = []
+let rotate_data = []
 map_3d()
   .then(resp => {
     image_in_image_data = [...resp]
+  })
+  .then(() => {
+    data_cansat().then(resp => {
+      rotate_data = [...resp.map(el => el.rot)]
+      console.log('rot data', rotate_data)
+    })
   })
   .then(() => {
     const icon_loader = new GLTFLoader()
@@ -117,6 +126,12 @@ map_3d()
         (distanceFromHigherLayer * y_differ) / heightOfLayer
 
       cube.position.set(cube_x, cube_z, cube_y)
+      const { _x, _y, _z } = rotate_data[e.target.value]
+      cube.rotation.x = _x * (Math.PI / 180)
+      cube.rotation.y = _y * (Math.PI / 180)
+      cube.rotation.z = _z * (Math.PI / 180)
+      console.log(_x, _y, _z)
+      label_rotate.textContent = `CanSat rotation| x: ${_x}° y: ${_y}° z: ${_z}°`
       cube.name = 'falling_probe'
       scene.add(cube)
     })

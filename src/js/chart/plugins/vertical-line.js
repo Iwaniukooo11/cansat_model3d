@@ -27,7 +27,7 @@ const verticalLinePlugin = {
       lineLeftOffset,
       (scale.bottom - scale.top) / 2 + scale.top
     )
-    console.log(context.width)
+    // console.log(context.width)
   },
 
   afterDatasetsDraw: function(chart, easing) {

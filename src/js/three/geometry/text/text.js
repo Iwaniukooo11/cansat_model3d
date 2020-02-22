@@ -96,7 +96,8 @@ data_cansat()
         mesh.position.set(
           square_size * 1,
           -1 * (square_size / 2) * numOfMapLayers +
-            (height * (square_size / 2) * (numOfMapLayers - 1)) / 3000 +
+            (height * (square_size / 2) * (numOfMapLayers - 1)) /
+              data_to_arr[0].height +
             i -
             square_size / numOfMapLayers,
           0

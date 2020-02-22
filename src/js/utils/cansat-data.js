@@ -1,16 +1,16 @@
 import db from '../database/database'
-const data_ref = db.collection('SPM').orderBy('time', 'asc')
+const data_ref = db.collection('real_data').orderBy('height', 'desc')
 import pseudo_db from '../dev-data/db-data'
 
-// const data_cansat = async () => {
-//   let snapshot = await data_ref.get()
-//   snapshot = snapshot.docs.map(doc => doc.data())
-//   return snapshot
-// }
 const data_cansat = async () => {
-  let snapshot = pseudo_db
+  let snapshot = await data_ref.get()
+  snapshot = snapshot.docs.map(doc => doc.data())
   return snapshot
 }
+// const data_cansat = async () => {
+//   let snapshot = pseudo_db
+//   return snapshot
+// }
 export { data_cansat }
 
 const coords_ref = db.collection('Map_3D').orderBy('height', 'desc')
