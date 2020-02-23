@@ -46,13 +46,21 @@ const Chart = require('chart.js')
 import charts_promise from './chart/charts/charts'
 import vertical_line from './chart/plugins/vertical-line'
 let arr_chart = []
-const ctx_charts = [...document.querySelectorAll('.canvas-chart')]
+
+const ctx_charts_up = [...document.querySelectorAll('.canvas-chart-up')]
+const ctx_charts_down = [...document.querySelectorAll('.canvas-chart-down')]
 const getCharts = async () => {
   // const arr_chart = await charts_promise
   arr_chart = await charts_promise
 
   arr_chart[0].forEach((el, i) => {
-    const myChart = new Chart(ctx_charts[i], el)
+    const myChart = new Chart(ctx_charts_up[i], el)
+  })
+  arr_chart[1].forEach((el, i) => {
+    const myChart = new Chart(ctx_charts_down[i], {
+      ...el
+      // lineAtIndex: [e.target.value - 1]
+    })
   })
 }
 getCharts()
@@ -70,7 +78,7 @@ input.addEventListener('input', e => {
   // square_size / numOfMapLayers,
 
   arr_chart[0].forEach((el, i) => {
-    const myChart = new Chart(ctx_charts[i], {
+    const myChart = new Chart(ctx_charts_up[i], {
       ...el,
       lineAtIndex: [e.target.value - 1]
     })
