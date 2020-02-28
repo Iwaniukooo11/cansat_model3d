@@ -45,7 +45,7 @@ data_cansat()
     })
   })
   .then(() => {
-    input.max = data_to_arr.length - 2
+    input.max = data_to_arr.length
     input.value = 0
 
     input.addEventListener('input', e => {
@@ -54,10 +54,14 @@ data_cansat()
       scene.remove(objectToRemove)
 
       const { height, time, pressure } = data_to_arr[e.target.value - 1]
+      const height_absolute =
+        height - data_to_arr[data_to_arr.length - 1].height.toFixed(2)
+
+      console.log(height, data_to_arr[data_to_arr.length - 1].height)
       const name = [
         { pressure: pressure, unit: 'hPa' },
         { time: time, unit: 's' },
-        { height: height, unit: 'm' }
+        { height: height_absolute, unit: 'm' }
       ]
       const size = 12
 
