@@ -54,10 +54,10 @@ data_cansat()
       scene.remove(objectToRemove)
 
       const { height, time, pressure } = data_to_arr[e.target.value - 1]
-      const height_absolute =
-        height - data_to_arr[data_to_arr.length - 1].height.toFixed(2)
+      const height_absolute = (
+        height - data_to_arr[data_to_arr.length - 1].height
+      ).toFixed(2)
 
-      console.log(height, data_to_arr[data_to_arr.length - 1].height)
       const name = [
         { pressure: pressure, unit: 'hPa' },
         { time: time, unit: 's' },

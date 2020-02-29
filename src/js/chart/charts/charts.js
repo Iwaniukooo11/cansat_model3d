@@ -3,8 +3,17 @@ import { data_cansat } from '../../utils/cansat-data'
 let height_time = null
 
 const func = data_cansat().then(resp => {
-  const test_data = resp
-
+  // const test_data = resp
+  const test_data = resp.map(el => {
+    const height = (el.height - resp[resp.length - 1].height).toFixed(2)
+    const obj = { ...el }
+    obj.height = height
+    return obj
+  })
+  // console.log(height_fixed)
+  // test_data.forEach((el,i)=>{
+  //   test_data[i].height=height_fixed[i]
+  // })
   const data_arr_first = [
     {
       type: 'line',
@@ -29,7 +38,7 @@ const func = data_cansat().then(resp => {
     {
       type: 'line',
       data_x: test_data.map(obj => obj.height).reverse(),
-      data_y: test_data.map(obj => obj.pressure),
+      data_y: test_data.map(obj => obj.pressure).reverse(),
       label: 'pressure',
       color: '484d4d',
       label_string_y: 'pressure [hPa]',

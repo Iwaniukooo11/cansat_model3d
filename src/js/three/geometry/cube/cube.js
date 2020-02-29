@@ -21,7 +21,6 @@ const createCubeLayers = () => {
     const folder = toggler.classList.contains('img-in-img')
       ? 'img_in_img'
       : 'segmentation'
-    console.log(folder)
 
     const texture = new THREE.TextureLoader().load(
       `assets/images_camera/${folder}/a-${i}.JPG`

@@ -17,7 +17,6 @@ map_3d()
   .then(() => {
     data_cansat().then(resp => {
       rotate_data = [...resp.map(el => el.rot)]
-      console.log('rot data', rotate_data)
     })
   })
   .then(() => {
@@ -130,7 +129,6 @@ map_3d()
       cube.rotation.x = _x * (Math.PI / 180)
       cube.rotation.y = _y * (Math.PI / 180)
       cube.rotation.z = _z * (Math.PI / 180)
-      console.log(_x, _y, _z)
       label_rotate.textContent = `CanSat rotation| x: ${_x}° y: ${_y}° z: ${_z}°`
       cube.name = 'falling_probe'
       scene.add(cube)
