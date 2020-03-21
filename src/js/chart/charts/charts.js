@@ -1,19 +1,13 @@
 import { data_cansat } from '../../utils/cansat-data'
 
-let height_time = null
-
 const func = data_cansat().then(resp => {
-  // const test_data = resp
   const test_data = resp.map(el => {
     const height = (el.height - resp[resp.length - 1].height).toFixed(2)
     const obj = { ...el }
     obj.height = height
     return obj
   })
-  // console.log(height_fixed)
-  // test_data.forEach((el,i)=>{
-  //   test_data[i].height=height_fixed[i]
-  // })
+
   const data_arr_first = [
     {
       type: 'line',
@@ -119,7 +113,6 @@ const func = data_cansat().then(resp => {
       {
         id: 'x',
         type: 'linear',
-        // position: 'left',
         scaleLabel: {
           display: false,
           labelString: 'x'
@@ -156,16 +149,13 @@ const func = data_cansat().then(resp => {
   const createChart = obj => {
     const chart = {
       type: obj.type,
-      // lineAtIndex: [20, 40, 80],
       data: {
         labels: obj.data_x,
         datasets: [
           {
             label: obj.label,
             labelString: `#${obj.label}`,
-            // backgroundColor: '#1abc9c',
             backgroundColor: `#${obj.color}`,
-            // borderColor: '#1abc9c',
             borderColor: `#${obj.color}`,
             data: obj.data_y,
             borderWidth: 1,
@@ -174,7 +164,6 @@ const func = data_cansat().then(resp => {
         ]
       },
       options: {
-        // maintainAspectRatio: true,
         maintainAspectRatio: false,
         aspectRatio: 2,
         responsive: true,
@@ -189,7 +178,6 @@ const func = data_cansat().then(resp => {
                 labelString: obj.label_string_y
               },
               ticks: {
-                // stepSize: 100
                 beginAtZero: true,
                 max: Math.max(
                   obj.data_y[obj.data_y.length - 1] * 1.1,
@@ -203,39 +191,23 @@ const func = data_cansat().then(resp => {
               scaleLabel: {
                 display: true,
                 labelString: obj.label_string_x
-              },
-              ticks: {
-                // min: obj.data_x[0],
-                // max: obj.data_x[obj.data_x.length - 1],
-                // stepSize: obj.equal_space
-                //   ? parseInt(
-                //       (obj.data_x[obj.data_x.length - 1] - obj.data_x[0]) /
-                //         obj.data_x.length
-                //     )
-                //   : null
-                // stepSize: 10,
-                // min: 0,
-                // max: 40
               }
             }
           ]
         }
       }
     }
-    // data_chart.push(chart)
     return chart
   }
 
   const createRotateChart = obj => {
     const chart = {
       type: obj.type,
-      // lineAtIndex: [20, 40, 80],
       data: {
         labels: obj.data_x,
         datasets: obj.dataset
       },
       options: {
-        // maintainAspectRatio: true,
         maintainAspectRatio: false,
         scaleShowLabels: false,
         aspectRatio: 2,
@@ -245,14 +217,7 @@ const func = data_cansat().then(resp => {
         },
         scales: {
           yAxes: obj.y_axes,
-          // yAxes: [
-          //   {
-          //     ticks: {
-          //       display: false
-          //     }
-          //   }
-          // ],
-          // yAxes: [{ display: false }],
+
           xAxes: [
             {
               scaleLabel: {
@@ -264,7 +229,6 @@ const func = data_cansat().then(resp => {
         }
       }
     }
-    // data_chart.push(chart)
     return chart
   }
 

@@ -1,5 +1,3 @@
-//  to do - auto w zaleznosci od switcha
-
 const THREE = require('three')
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 import scene from '../../environment/scene/scene'
@@ -53,7 +51,6 @@ const createCubeLayers = () => {
 
     cube.position.set(0, -1 * (square_size / 2) * i, 0) //!!
     cube.name = `cube-${i}`
-    // cubes_arr.push(cube)
     scene.add(cube)
   }
 }

@@ -1,5 +1,3 @@
-let start = Date.now()
-
 const THREE = require('three')
 const OrbitControls = require('three-orbitcontrols')
 
@@ -12,12 +10,10 @@ import line from './three/geometry/line/line'
 import skeleton from './three/geometry/skeleton/skeleton'
 import text from './three/geometry/text/text'
 import { numOfMapLayers } from './utils/hand-made-data'
-// import rotate from './three/rotate/index'
 
 const spinner = document.querySelector('.spinner')
 
 scene.add(light)
-// cubes.forEach(el => scene.add(el))
 skeleton.forEach(el => scene.add(el))
 
 const renderer = new THREE.WebGLRenderer()
@@ -30,7 +26,6 @@ controls.dampingFactor = 0.25
 controls.enableZoom = true
 controls.enableKeys = true
 controls.target = new THREE.Vector3(-1, -2 * numOfMapLayers, -1)
-// controls.autoRotate = true
 controls.update()
 
 const animate = () => {
@@ -59,7 +54,6 @@ const getCharts = async () => {
   arr_chart[1].forEach((el, i) => {
     const myChart = new Chart(ctx_charts_down[i], {
       ...el
-      // lineAtIndex: [e.target.value - 1]
     })
   })
 }
@@ -71,12 +65,6 @@ window.onload = () => {
 }
 const input = document.querySelector('.range-input')
 input.addEventListener('input', e => {
-  //   //coppied from cube.js
-  //   const z=(height * (square_size / 2) * (numOfMapLayers - 1)) /
-  //   data_to_arr[0].height +
-  // i -
-  // square_size / numOfMapLayers,
-
   arr_chart[0].forEach((el, i) => {
     const myChart = new Chart(ctx_charts_up[i], {
       ...el,

@@ -10,16 +10,6 @@
         left: 0;
         white-space: nowrap;
     }
-
-    // * {
-    //     pointer-events: none !important;
-    // }
-
-    // .onoffswitch-switch {
-    //     pointer-events: initial;
-    // }
-
-
 }
 
 .onoffswitch {
@@ -40,7 +30,6 @@
     cursor: pointer;
     border: 2px solid #999999;
     border-radius: 0px;
-    // pointer-events: none;
 }
 
 .onoffswitch-inner {
@@ -49,7 +38,6 @@
     margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
     pointer-events: none;
-
 }
 
 .onoffswitch-inner:before,
