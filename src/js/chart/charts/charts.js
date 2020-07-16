@@ -1,113 +1,155 @@
 import { data_cansat } from '../../utils/cansat-data'
 
-const func = data_cansat().then(resp => {
-  const test_data = resp.map(el => {
-    const height = (el.height - resp[resp.length - 1].height).toFixed(2)
+const func = data_cansat('both').then((resp) => {
+  const test_data = resp.map((el, i) => {
+    let height = (el.height * 1 - resp[resp.length - 1].height * 1).toFixed(2)
+    // height===0?
     const obj = { ...el }
     obj.height = height
     return obj
   })
 
+  // const log = test_data.filter((obj, i) => {
+  //   if (parseInt(obj.height) !== 0 && i > 3) {
+  //     // console.log('FOUNDD')
+  //     return obj.height
+  //   }
+  // })
+
+  // console.log('LOG', log)
+
+  const removeZeroHeight = (_arr) => {
+    const arr = _arr
+      .filter((obj, i) => {
+        if (parseInt(obj.height) !== 0 && i > 3) {
+          console.log('FOUNDD')
+          return obj.height
+        }
+      })
+      .map((doc) => doc.height)
+    return arr
+  }
+
   const data_arr_first = [
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.time),
-      data_y: test_data.map(obj => obj.height),
+      data_x: test_data.map((obj) => obj.time1),
+      data_y: removeZeroHeight(test_data),
       label: 'height',
       color: '484d4d',
       label_string_y: 'height [m]',
-      label_string_x: 'time [s]'
+      label_string_x: 'time [s]',
     },
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.time),
-      data_y: test_data.map(obj => obj.temperature),
+      data_x: test_data.map((obj) => obj.time1),
+      data_y: test_data.map((obj) => obj.temperature2),
       label: 'temperature',
       color: 'ff435f',
       label_string_y: 'temperature [°C]',
-      label_string_x: 'time [s]'
-    }
+      label_string_x: 'time [s]',
+    },
   ]
   const data_arr_rest = [
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.height).reverse(),
-      data_y: test_data.map(obj => obj.pressure).reverse(),
+      data_x: removeZeroHeight(test_data).reverse(),
+      data_y: test_data.map((obj) => obj.pressure).reverse(),
       label: 'pressure',
       color: '484d4d',
       label_string_y: 'pressure [hPa]',
-      label_string_x: 'height [m]'
+      label_string_x: 'height [m]',
     },
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.temperature),
-      data_y: test_data.map(obj => obj.humidity),
+      data_x: test_data.map((obj) => obj.temperature2),
+      data_y: test_data.map((obj) => obj.humidity),
       label: 'humidity',
       color: 'ff435f',
       label_string_y: 'humidity [%]',
-      label_string_x: 'temperature [°C]'
+      label_string_x: 'temperature [°C]',
     },
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.height).reverse(),
-      data_y: test_data.map(obj => obj.humidity),
+      data_x: removeZeroHeight(test_data).reverse(),
+
+      data_y: test_data.map((obj) => obj.humidity),
       label: 'humidity',
       color: '484d4d',
       label_string_y: 'humidity [%]',
-      label_string_x: 'height [m]'
+      label_string_x: 'height [m]',
     },
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.time),
-      data_y: test_data.map(obj => obj.speed),
+      data_x: test_data.map((obj) => obj.time1),
+      data_y: test_data.map((obj) => obj.speed),
       label: 'speed',
       color: 'ff435f',
       label_string_y: 'speed [m/s]',
-      label_string_x: 'time [s]'
+      label_string_x: 'time [s]',
     },
     {
       type: 'line',
-      data_x: test_data.map(obj => obj.height).reverse(),
-      data_y: test_data.map(obj => obj.speed),
+      data_x: removeZeroHeight(test_data).reverse(),
+      data_y: test_data.map((obj) => obj.speed),
       label: 'speed',
       color: '484d4d',
       label_string_y: 'speed [m/s]',
       label_string_x: 'height [m]',
-      equal_space: true
-    }
+      equal_space: true,
+    },
+    {
+      type: 'line',
+      // data_x: test_data.map((obj) => obj.height),
+      data_x: removeZeroHeight(test_data).reverse(),
+      data_y: test_data.map((obj) => obj.flux),
+      label: 'flux',
+      color: 'ff435f',
+      label_string_y: 'flux [B]',
+      label_string_x: 'height [m]',
+    },
+    {
+      type: 'line',
+      data_x: test_data.map((obj) => obj.time1),
+      data_y: test_data.map((obj) => obj.solar_vol),
+      label: 'voltage',
+      color: '484d4d',
+      label_string_y: 'voltage [V]',
+      label_string_x: 'time [s]',
+    },
   ]
 
   const rotate_obj = {
     type: 'line',
-    data_x: test_data.map(obj => obj.time),
+    data_x: test_data.map((obj) => obj.time1),
     dataset: [
       {
-        data: test_data.map(obj => obj.rot._x),
+        data: test_data.map((obj) => obj.xo),
         label: 'rotation-x',
         yAxisID: 'x',
         borderColor: `#05192a`,
         backgroundColor: '#05192a',
         fill: false,
-        borderWidth: 1
+        borderWidth: 1,
       },
       {
-        data: test_data.map(obj => obj.rot._y),
+        data: test_data.map((obj) => obj.yo),
         label: 'rotation-y',
         yAxisID: 'y',
         borderColor: `#484d4d`,
         backgroundColor: '#484d4d',
         fill: false,
-        borderWidth: 1
+        borderWidth: 1,
       },
       {
-        data: test_data.map(obj => obj.rot._z),
+        data: test_data.map((obj) => obj.zo),
         label: 'rotation-z',
         yAxisID: 'z',
         backgroundColor: '#ff435f',
         borderColor: '#ff435f',
         fill: false,
-        borderWidth: 1
-      }
+        borderWidth: 1,
+      },
     ],
     y_axes: [
       {
@@ -115,8 +157,8 @@ const func = data_cansat().then(resp => {
         type: 'linear',
         scaleLabel: {
           display: false,
-          labelString: 'x'
-        }
+          labelString: 'x',
+        },
       },
       {
         id: 'y',
@@ -124,8 +166,8 @@ const func = data_cansat().then(resp => {
         position: 'left',
         scaleLabel: {
           display: false,
-          labelString: 'y'
-        }
+          labelString: 'y',
+        },
       },
       {
         id: 'z',
@@ -133,20 +175,20 @@ const func = data_cansat().then(resp => {
         position: 'left',
         scaleLabel: {
           display: false,
-          labelString: 'z'
-        }
-      }
+          labelString: 'z',
+        },
+      },
     ],
     label: 'speed',
     color: '484d4d',
     label_string_y: 'speed [m/s]',
-    label_string_x: 'height [m]'
+    label_string_x: 'height [m]',
   }
 
   const data_chart_first = []
   const data_chart_rest = []
 
-  const createChart = obj => {
+  const createChart = (obj) => {
     const chart = {
       type: obj.type,
       data: {
@@ -159,53 +201,53 @@ const func = data_cansat().then(resp => {
             borderColor: `#${obj.color}`,
             data: obj.data_y,
             borderWidth: 1,
-            fill: false
-          }
-        ]
+            fill: false,
+          },
+        ],
       },
       options: {
         maintainAspectRatio: false,
         aspectRatio: 2,
         responsive: true,
         animation: {
-          duration: 0
+          duration: 0,
         },
         scales: {
           yAxes: [
             {
               scaleLabel: {
                 display: true,
-                labelString: obj.label_string_y
+                labelString: obj.label_string_y,
               },
               ticks: {
                 beginAtZero: true,
                 max: Math.max(
                   obj.data_y[obj.data_y.length - 1] * 1.1,
                   obj.data_y[0] * 1.1
-                )
-              }
-            }
+                ),
+              },
+            },
           ],
           xAxes: [
             {
               scaleLabel: {
                 display: true,
-                labelString: obj.label_string_x
-              }
-            }
-          ]
-        }
-      }
+                labelString: obj.label_string_x,
+              },
+            },
+          ],
+        },
+      },
     }
     return chart
   }
 
-  const createRotateChart = obj => {
+  const createRotateChart = (obj) => {
     const chart = {
       type: obj.type,
       data: {
         labels: obj.data_x,
-        datasets: obj.dataset
+        datasets: obj.dataset,
       },
       options: {
         maintainAspectRatio: false,
@@ -213,7 +255,7 @@ const func = data_cansat().then(resp => {
         aspectRatio: 2,
         responsive: true,
         animation: {
-          duration: 0
+          duration: 0,
         },
         scales: {
           yAxes: obj.y_axes,
@@ -222,20 +264,20 @@ const func = data_cansat().then(resp => {
             {
               scaleLabel: {
                 display: true,
-                labelString: obj.label_string_x
-              }
-            }
-          ]
-        }
-      }
+                labelString: obj.label_string_x,
+              },
+            },
+          ],
+        },
+      },
     }
     return chart
   }
 
-  data_arr_first.forEach(obj => {
+  data_arr_first.forEach((obj) => {
     data_chart_first.push(createChart(obj))
   })
-  data_arr_rest.forEach(obj => {
+  data_arr_rest.forEach((obj) => {
     data_chart_rest.push(createChart(obj))
   })
   data_chart_rest.push(createRotateChart(rotate_obj))

@@ -34,12 +34,13 @@ const makeLabelCanvas = (size, name) => {
   return ctx.canvas
 }
 
-data_cansat()
-  .then(resp => {
+data_cansat('both')
+  .then((resp) => {
     data_to_arr = [...resp]
+    console.log('I AM RESPONSE: ', resp, resp.length)
   })
   .then(() => {
-    loader.load('../../../assets/fonts/Arial_Regular.typeface.json', font => {
+    loader.load('../../../assets/fonts/Arial_Regular.typeface.json', (font) => {
       my_font = font
     })
   })
@@ -47,20 +48,21 @@ data_cansat()
     input.max = data_to_arr.length
     input.value = 0
 
-    input.addEventListener('input', e => {
+    input.addEventListener('input', (e) => {
       span.textContent = `${e.target.value}s`
       const objectToRemove = scene.getObjectByName('last_mesh')
       scene.remove(objectToRemove)
 
-      const { height, time, pressure } = data_to_arr[e.target.value - 1]
+      const { height, time1, pressure } = data_to_arr[e.target.value * 1 - 1]
       const height_absolute = (
-        height - data_to_arr[data_to_arr.length - 1].height
+        height * 1 -
+        data_to_arr[data_to_arr.length - 1].height * 1
       ).toFixed(2)
 
       const name = [
         { pressure: pressure, unit: 'hPa' },
-        { time: time, unit: 's' },
-        { height: height_absolute, unit: 'm' }
+        { time: time1, unit: 's' },
+        { height: height_absolute, unit: 'm' },
       ]
       const size = 12
 
@@ -89,7 +91,7 @@ data_cansat()
         const labelMaterial = new THREE.MeshBasicMaterial({
           map: texture,
           side: THREE.DoubleSide,
-          transparent: true
+          transparent: true,
         })
 
         arr_canvas.push(canvas)

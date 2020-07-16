@@ -11,25 +11,26 @@ let icon = ''
 let image_in_image_data = []
 let rotate_data = []
 map_3d()
-  .then(resp => {
+  .then((resp) => {
     image_in_image_data = [...resp]
   })
   .then(() => {
-    data_cansat().then(resp => {
-      rotate_data = [...resp.map(el => el.rot)]
+    data_cansat('both').then((resp) => {
+      // rotate_data = [...resp.map((el) => el.rot)]
+      rotate_data = [...resp]
     })
   })
   .then(() => {
     const icon_loader = new GLTFLoader()
     icon_loader.load(
       '../../../../assets/3d/cansat_icon.glb',
-      resp => {
+      (resp) => {
         icon = resp.scene
         icon.scale.set(0.005, 0.005, 0.005)
       },
       null,
-      err => {
-        icon_loader.load('assets/3d/cansat_icon.glb', resp => {
+      (err) => {
+        icon_loader.load('assets/3d/cansat_icon.glb', (resp) => {
           icon = resp.scene
           icon.scale.set(0.005, 0.005, 0.005)
         })
@@ -42,7 +43,7 @@ map_3d()
     const geometryLine = new THREE.Geometry()
     const material_line = new THREE.LineBasicMaterial({
       color: 0xff435f,
-      linewidth: 3
+      linewidth: 3,
     })
 
     for (let i = 0; i < image_in_image_data.length - 1; i++) {
@@ -74,17 +75,17 @@ map_3d()
     layers_coord.push([
       0,
       -1 * (square_size / 2) * image_in_image_data.length,
-      0
+      0,
     ])
 
     const line = new THREE.Line(geometryLine, material_line)
 
     const material_cube = new THREE.MeshStandardMaterial({
-      color: '#ff435f'
+      color: '#ff435f',
     })
     const geometry_cube = new THREE.BoxGeometry(0.35, 0.35, 0.35)
 
-    input.addEventListener('input', e => {
+    input.addEventListener('input', (e) => {
       const objectToRemove = scene.getObjectByName('falling_probe')
       scene.remove(objectToRemove)
 
@@ -125,11 +126,11 @@ map_3d()
         (distanceFromHigherLayer * y_differ) / heightOfLayer
 
       cube.position.set(cube_x, cube_z, cube_y)
-      const { _x, _y, _z } = rotate_data[e.target.value]
-      cube.rotation.x = _x * (Math.PI / 180)
-      cube.rotation.y = _y * (Math.PI / 180)
-      cube.rotation.z = _z * (Math.PI / 180)
-      label_rotate.textContent = `CanSat rotation| x: ${_x}° y: ${_y}° z: ${_z}°`
+      const { xo, yo, zo } = rotate_data[e.target.value]
+      cube.rotation.x = (xo + 180) * (Math.PI / 180)
+      cube.rotation.y = (yo + 180) * (Math.PI / 180)
+      cube.rotation.z = (zo + 180) * (Math.PI / 180)
+      label_rotate.textContent = `CanSat rotation| x: ${xo}° y: ${yo}° z: ${zo}°`
       cube.name = 'falling_probe'
       scene.add(cube)
     })
