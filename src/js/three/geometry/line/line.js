@@ -10,9 +10,10 @@ const label_rotate = document.querySelector('#rotate-value')
 let icon = ''
 let image_in_image_data = []
 let rotate_data = []
-map_3d()
+map_3d('both')
   .then((resp) => {
     image_in_image_data = [...resp]
+    console.log('img in img', image_in_image_data)
   })
   .then(() => {
     data_cansat('both').then((resp) => {
@@ -86,17 +87,40 @@ map_3d()
     const geometry_cube = new THREE.BoxGeometry(0.35, 0.35, 0.35)
 
     input.addEventListener('input', (e) => {
+      console.log(e.target.value)
       const objectToRemove = scene.getObjectByName('falling_probe')
       scene.remove(objectToRemove)
 
       const cube = icon ? icon : new THREE.Mesh(geometry_cube, material_cube)
+      //2
+      // ((input.max - e.target.value) *
+      // const cube_z =
+      //   -1 * (square_size / 2) * numOfMapLayers +
+      //   ((rotate_data[rotate_data.length - 5].height -
+      //     rotate_data[e.target.value * 1 - 1].height) *
+      //     (square_size / 2) *
+      //     (numOfMapLayers - 1)) /
+      //     rotate_data[rotate_data.length - 5].height
+      // // input.max
 
       const cube_z =
         -1 * (square_size / 2) * numOfMapLayers +
-        ((input.max - e.target.value) *
+        (rotate_data[e.target.value].height *
+          1 *
           (square_size / 2) *
           (numOfMapLayers - 1)) /
-          input.max
+          rotate_data[0].height -
+        square_size / numOfMapLayers +
+        4
+
+      // const cube_z =
+      //   0 -
+      //   ((rotate_data[e.target.value].height * 1) / rotate_data[1].height) *
+      //     1 *
+      //     (square_size / 2) *
+      //     numOfMapLayers
+
+      console.log('CANSAT POSITION', cube_z)
 
       //find the closer z
       let part_of_map = layers_coord.length - 1
@@ -106,6 +130,8 @@ map_3d()
           break
         }
       }
+
+      console.log('layers cord', layers_coord, part_of_map)
 
       const distanceFromHigherLayer = layers_coord[part_of_map][1] - cube_z
       const heightOfLayer =

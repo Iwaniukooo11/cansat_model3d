@@ -21,7 +21,7 @@ const createCubeLayers = () => {
       : 'segmentation'
 
     const texture = new THREE.TextureLoader().load(
-      `assets/images_camera/${folder}/a-${i}.JPG`
+      `assets/images_camera/${folder}/${i}.JPG`
     )
 
     texture.encoding = THREE.sRGBEncoding
@@ -33,7 +33,7 @@ const createCubeLayers = () => {
       opacity: 0.9999,
       emissive: 'rgb(255,255,255)',
       emissiveIntensity: 0.2,
-      transparent: true
+      transparent: true,
     })
 
     const geometryCube = new THREE.BoxGeometry(square_size, 0.05, square_size)
@@ -41,7 +41,7 @@ const createCubeLayers = () => {
     const geometryEdge = new THREE.EdgesGeometry(geometryCube)
     const materialEdge = new THREE.LineBasicMaterial({
       color: 0x4c4d4d,
-      linewidth: 3
+      linewidth: 3,
     })
     const wireframe = new THREE.LineSegments(geometryEdge, materialEdge)
     wireframe.renderOrder = 1

@@ -108,6 +108,14 @@ data_cansat('both')
           0
         )
 
+        console.log(
+          'TEXT POSITION: ',
+          -1 * (square_size / 2) * numOfMapLayers +
+            (height * (square_size / 2) * (numOfMapLayers - 1)) /
+              data_to_arr[0].height +
+            i -
+            square_size / numOfMapLayers
+        )
         mesh.name = `last_mesh-${key}`
         scene.add(mesh)
       }
