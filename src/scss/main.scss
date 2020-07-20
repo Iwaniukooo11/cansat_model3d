@@ -127,14 +127,24 @@ body {
   }
 
   #chart-down-wrap {
-    display: grid;
-    justify-items: center;
+    // display: grid;
+    // justify-items: center;
+    // align-items: center;
+    // row-gap: 50px;
+    display: flex;
     align-items: center;
-    row-gap: 50px;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
   }
 
   .canvas-chart-down {
     max-width: 80vw !important;
     max-height: 50vh !important;
+  }
+
+  .header-title {
+    margin: 20px;
+    text-align: center;
   }
 }

@@ -1,92 +1,120 @@
 <!DOCTYPE html>
 <html lang="pl" prefix="og: http://ogp.me/ns#">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta name="author" content="Mateusz Iwaniuk & Adam Kaniasty" />
-    <meta
-      name="description"
-      content="CanSat 3D Map, which shows all the data recieved from falling probe"
-    />
-    <meta
-      property="og:description"
-      content="CanSat 3D Map, which shows all the data recieved from falling probe"
-    />
-    <meta
-      name="keywords"
-      content="vilo VILO model model3d 3d map map3d dane project projekt Trailblazer sonda kosmos satelita konkurs esa cansat puszka trailbazer szóstka bydgoszcz iwaniuk mateusz kaniasty adam muszyński musyznski tymon fryczka łukasz automat mat-fiz 1a uczniowskie przedsiewziecie laureaci"
-    />
-    <meta property="og:image" content="assets/img/astronaut.jpg" />
-    <meta property="og:title" content="Trailblazer 3D Map" />
-    <meta property="og:type" content="model.mapa.projekt.sonda.satelita" />
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="author" content="Mateusz Iwaniuk & Adam Kaniasty" />
+  <meta name="description" content="CanSat 3D Map, which shows all the data recieved from falling probe" />
+  <meta property="og:description" content="CanSat 3D Map, which shows all the data recieved from falling probe" />
+  <meta name="keywords"
+    content="vilo VILO model model3d 3d map map3d dane project projekt Trailblazer sonda kosmos satelita konkurs esa cansat puszka trailbazer szóstka bydgoszcz iwaniuk mateusz kaniasty adam muszyński musyznski tymon fryczka łukasz automat mat-fiz 1a uczniowskie przedsiewziecie laureaci" />
+  <meta property="og:image" content="assets/img/astronaut.jpg" />
+  <meta property="og:title" content="Trailblazer 3D Map" />
+  <meta property="og:type" content="model.mapa.projekt.sonda.satelita" />
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <title>Trailblazer 3D Map</title>
-  </head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <body class="main-content">
-    <header class="header">
-      <h1 class="header__head">Project Trailblazer</h1>
-      <img
-        src="assets/images/astronaut.svg"
-        alt="astronaut icon"
-        class="header__img"
-      />
-    </header>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <title>Trailblazer 3D Map</title>
+</head>
 
-    <div class="canvas-three-parent">
-      <div id="canvas-three"></div>
-      <div id="rotate-three"></div>
-      <span class="rotate-label"></span>
-      <div class="onoffswitch checkbox ">
-        <input
-          type="checkbox"
-          name="onoffswitch"
-          class="onoffswitch-checkbox"
-          id="myonoffswitch"
-          checked
-        />
-        <label class="onoffswitch-label " for="myonoffswitch">
-          <span class="onoffswitch-inner"></span>
-          <span class="onoffswitch-switch img-in-img"></span>
-        </label>
-      </div>
+<body class="main-content">
+  <header class="header">
+    <h1 class="header__head">Project Trailblazer</h1>
+    <img src="assets/images/astronaut.svg" alt="astronaut icon" class="header__img" />
+  </header>
+
+  <div class="canvas-three-parent">
+    <div id="canvas-three"></div>
+    <div id="rotate-three"></div>
+    <span class="rotate-label"></span>
+    <div class="onoffswitch checkbox ">
+      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked />
+      <label class="onoffswitch-label " for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch img-in-img"></span>
+      </label>
     </div>
-    <canvas
-      class="chart-main  canvas-chart canvas-chart-up canvas-chart--top"
-    ></canvas>
-    <canvas
-      class="chart-main  canvas-chart canvas-chart-up canvas-chart--bottom"
-    ></canvas>
+  </div>
+  <canvas class="chart-main  canvas-chart canvas-chart-up canvas-chart--top"></canvas>
+  <canvas class="chart-main  canvas-chart canvas-chart-up canvas-chart--bottom"></canvas>
 
-    <main id="chart-down-wrap">
+  <h1 class='header-title'>During the fall</h1>
+  <ul id="chart-down-wrap">
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
       <canvas class="canvas-chart-down"></canvas>
-    </main>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
 
-    <input type="range" id="time-input" class="range-input" min="1" value="1" />
-    <span id="time-value">1</span>
-    <span id="rotate-value"></span>
+  </ul>
 
-    <div class="spinner loader lds-facebook">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </body>
+  <h1 class='header-title'>After the fall</h1>
+  <ul id="chart-down-wrap">
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+    <li class="" style='width: 45%'>
+      <canvas class="canvas-chart-down"></canvas>
+    </li>
+  </ul>
 
-  <script src="assets/js/bundle.min.js"></script>
+  <input type="range" id="time-input" class="range-input" min="1" value="1" />
+  <span id="time-value">1</span>
+  <span id="rotate-value"></span>
+
+  <div class="spinner loader lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+
+<script src="assets/js/bundle.min.js"></script>
+
 </html>
