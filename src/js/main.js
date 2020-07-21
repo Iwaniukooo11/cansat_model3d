@@ -1,3 +1,4 @@
+// git subtree push --prefix dist origin gh-pages
 const THREE = require('three')
 const OrbitControls = require('three-orbitcontrols')
 
@@ -14,7 +15,7 @@ import { numOfMapLayers } from './utils/hand-made-data'
 const spinner = document.querySelector('.spinner')
 
 scene.add(light)
-skeleton.forEach(el => scene.add(el))
+skeleton.forEach((el) => scene.add(el))
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight * 0.85)
@@ -53,7 +54,7 @@ const getCharts = async () => {
   })
   arr_chart[1].forEach((el, i) => {
     const myChart = new Chart(ctx_charts_down[i], {
-      ...el
+      ...el,
     })
   })
 }
@@ -64,11 +65,11 @@ window.onload = () => {
   document.body.classList.add('active')
 }
 const input = document.querySelector('.range-input')
-input.addEventListener('input', e => {
+input.addEventListener('input', (e) => {
   arr_chart[0].forEach((el, i) => {
     const myChart = new Chart(ctx_charts_up[i], {
       ...el,
-      lineAtIndex: [e.target.value - 1]
+      lineAtIndex: [e.target.value - 1],
     })
   })
 })
