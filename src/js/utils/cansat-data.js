@@ -4,7 +4,10 @@ import { numOfMapLayers } from './hand-made-data'
 // const data_ref_2 = db.collection('P1_stan_2').orderBy('time1', 'asc')
 // const data_ref_1 = db.collection('test_nocny_stan_1').orderBy('time1', 'asc')
 // const data_ref_2 = db.collection('test_nocny_stan_2').orderBy('time1', 'asc')
-const data_ref_1 = db.collection('final_cansat_stan_1').orderBy('time1', 'asc')
+const data_ref_1 = db
+  .collection('final_cansat_stan_1')
+  .orderBy('time1', 'asc')
+  .where('time1', '>=', 134)
 const data_ref_2 = db.collection('final_cansat_stan_2').orderBy('time1', 'asc')
 import pseudo_db from '../dev-data/db-data'
 

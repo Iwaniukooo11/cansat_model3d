@@ -160,9 +160,9 @@ map_3d('both')
 
       cube.position.set(cube_x, cube_z, cube_y)
       const { xo, yo, zo } = rotate_data[e.target.value]
-      cube.rotation.x = (xo + 180) * (Math.PI / 180)
-      cube.rotation.y = (yo + 180) * (Math.PI / 180)
-      cube.rotation.z = (zo + 180) * (Math.PI / 180)
+      cube.rotation.x = xo * (Math.PI / 180)
+      cube.rotation.y = yo * (Math.PI / 180)
+      cube.rotation.z = zo * (Math.PI / 180)
       label_rotate.textContent = `CanSat rotation| x: ${xo}° y: ${yo}° z: ${zo}°`
       cube.name = 'falling_probe'
       scene.add(cube)
