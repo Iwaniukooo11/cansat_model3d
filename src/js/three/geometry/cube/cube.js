@@ -21,7 +21,7 @@ const createCubeLayers = () => {
       : 'segmentation'
 
     const texture = new THREE.TextureLoader().load(
-      `assets/images_camera/${folder}/${i}.JPG`
+      `assets/images_camera/${folder}/${i}.png`
     )
 
     texture.encoding = THREE.sRGBEncoding

@@ -1,4 +1,5 @@
 import db from '../database/database'
+import { numOfMapLayers } from './hand-made-data'
 // const data_ref_1 = db.collection('P1_stan_1').orderBy('time1', 'asc')
 // const data_ref_2 = db.collection('P1_stan_2').orderBy('time1', 'asc')
 // const data_ref_1 = db.collection('test_nocny_stan_1').orderBy('time1', 'asc')
@@ -40,14 +41,18 @@ const data_cansat = async (num = 1) => {
 // }
 export { data_cansat }
 
-const coords_ref = db.collection('Map_3D-dron').orderBy('height', 'desc')
+const coords_ref = db
+  .collection('final_map3D_1')
+  .orderBy('index', 'desc')
+  .limit(numOfMapLayers)
 
 const map_3d = async () => {
   let snapshot = await coords_ref.get()
   snapshot = snapshot.docs.map((doc) => {
     const obj = doc.data()
-    const { x, y, size, height } = obj
-    return [parseInt(x), parseInt(y), parseInt(size), parseInt(height)]
+    // const { x, y, size, height } = obj
+    // return [parseInt(x), parseInt(y), parseInt(size), parseInt(height)]
+    return obj
   })
   return snapshot
 }

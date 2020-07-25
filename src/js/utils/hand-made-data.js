@@ -1,3 +1,3 @@
-export const numOfMapLayers = 34
+export const numOfMapLayers = 54
 
 export const square_size = 8

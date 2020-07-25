@@ -48,15 +48,22 @@ map_3d('both')
     })
 
     for (let i = 0; i < image_in_image_data.length - 1; i++) {
-      const x = image_in_image_data[i][0]
-      const y = image_in_image_data[i][1]
-      const size_curent = image_in_image_data[i][2]
+      // const x = image_in_image_data[i][0] * 1
+      const x = image_in_image_data[i].x * 1
+      // const y = image_in_image_data[i][1] * 1
+      const y = image_in_image_data[i].y * 1
+      // const size_curent = image_in_image_data[i][2] * 1
+      // const size_next =
+      //   size_curent *
+      //   (image_in_image_data[i + 1][3] / image_in_image_data[i][3])
+      const size_curent = image_in_image_data[i].size * 1
       const size_next =
         size_curent *
-        (image_in_image_data[i + 1][3] / image_in_image_data[i][3])
+        (image_in_image_data[i + 1].height / image_in_image_data[i].height)
 
       const vec_x =
         (square_size * (x + size_next / 2)) / size_curent - square_size / 2
+
       const vec_y =
         (square_size * (y + size_next / 2)) / size_curent - square_size / 2
 
