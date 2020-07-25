@@ -10,6 +10,10 @@ const label_rotate = document.querySelector('#rotate-value')
 let icon = ''
 let image_in_image_data = []
 let rotate_data = []
+const moveXY = {
+  x: 0,
+  y: 0,
+}
 map_3d('both')
   .then((resp) => {
     image_in_image_data = [...resp]
@@ -48,6 +52,8 @@ map_3d('both')
     })
 
     for (let i = 0; i < image_in_image_data.length - 1; i++) {
+      moveXY.x += image_in_image_data[image_in_image_data.length - 1 - i].x * 1
+      moveXY.y += image_in_image_data[image_in_image_data.length - 1 - i].y * 1
       // const x = image_in_image_data[i][0] * 1
       const x = image_in_image_data[i].x * 1
       // const y = image_in_image_data[i][1] * 1
@@ -61,11 +67,31 @@ map_3d('both')
         size_curent *
         (image_in_image_data[i + 1].height / image_in_image_data[i].height)
 
-      const vec_x =
-        (square_size * (x + size_next / 2)) / size_curent - square_size / 2
+      // const vec_x =
+      //   (square_size * (x + size_next / 2)) / size_curent - square_size / 2
 
-      const vec_y =
-        (square_size * (y + size_next / 2)) / size_curent - square_size / 2
+      // const vec_y =
+      //   (square_size * (y + size_next / 2)) / size_curent - square_size / 2
+      const moveX =
+        (-1 * (image_in_image_data[i].x * 1 - moveXY.x)) /
+        (image_in_image_data[i].size / square_size)
+
+      const moveY =
+        (-1 * (image_in_image_data[i].y * 1 - moveXY.y)) /
+        (image_in_image_data[i].size / square_size)
+
+      // const vec_x =
+      //   (square_size * (x + size_next / 2)) / size_curent -
+      //   square_size / 2 +
+      //   moveX
+
+      // const vec_y =
+      //   (square_size * (y + size_next / 2)) / size_curent -
+      //   square_size / 2 +
+      //   moveY
+
+      const vec_x = moveX - 1.75 * square_size
+      const vec_y = moveY - 1.75 * square_size
 
       const vec_z = -1 * (square_size / 2) * (i + 1)
 

@@ -1,8 +1,23 @@
 const THREE = require('three')
 import { square_size, numOfMapLayers } from '../../../utils/hand-made-data'
 import scene from '../../environment/scene/scene'
+import { map_3d } from '../../../utils/cansat-data'
 
 const cubes_arr = []
+// let algorithm_arr = []
+
+// const sumAllEarlierXY = (arr, index, type = 'x') => {
+//   let sum = 0
+//   let i = arr.length - 1
+//   while (i >= 0) {
+//     if (arr[i].index != index) {
+//       sum += arr[i][type] * 1
+//       i--
+//       console.log('k', i == 0 ? '----------' : i)
+//     } else break
+//   }
+//   return sum
+// }
 
 const toggler = document.querySelector('.onoffswitch-switch')
 toggler.addEventListener('click', () => {
@@ -11,8 +26,17 @@ toggler.addEventListener('click', () => {
   createCubeLayers()
 })
 
-const createCubeLayers = () => {
+const createCubeLayers = (algorithm_arr) => {
+  console.log('received', algorithm_arr)
+  const moveXY = {
+    x: 0,
+    y: 0,
+  }
   for (let i = numOfMapLayers; 1 <= i; i--) {
+    // console.log(i)
+    moveXY.x += algorithm_arr[i - 1].x * 1
+    moveXY.y += algorithm_arr[i - 1].y * 1
+    console.log(moveXY)
     const objectToRemove = scene.getObjectByName(`cube-${i}`)
     scene.remove(objectToRemove)
 
@@ -49,11 +73,23 @@ const createCubeLayers = () => {
     const cube = new THREE.Mesh(geometryCube, materialCube)
     cube.add(wireframe)
 
-    cube.position.set(0, -1 * (square_size / 2) * i, 0) //!!
+    cube.position.set(
+      (-1 * (algorithm_arr[i - 1].x * 1 + moveXY.x)) /
+        (algorithm_arr[i - 1].size / square_size),
+      -1 * (square_size / 2) * i,
+      (-1 * (algorithm_arr[i - 1].y * 1 + moveXY.y)) /
+        (algorithm_arr[i - 1].size / square_size)
+    ) //!!
     cube.name = `cube-${i}`
     scene.add(cube)
   }
 }
-createCubeLayers()
+
+map_3d().then((res) => {
+  console.log('res: ')
+  // let algorithm_arr = [...res].reverse()
+  // console.log('algo arr: ', algorithm_arr)
+  createCubeLayers([...res].reverse())
+})
 
 export default cubes_arr

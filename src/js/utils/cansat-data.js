@@ -46,7 +46,7 @@ export { data_cansat }
 
 const coords_ref = db
   .collection('final_map3D_1')
-  .orderBy('index', 'desc')
+  .orderBy('index', 'asc')
   .limit(numOfMapLayers)
 
 const map_3d = async () => {
