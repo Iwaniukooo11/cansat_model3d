@@ -4,7 +4,7 @@ import scene from '../../environment/scene/scene'
 import { map_3d } from '../../../utils/cansat-data'
 
 const cubes_arr = []
-// let algorithm_arr = []
+let algorithm_arr = []
 
 // const sumAllEarlierXY = (arr, index, type = 'x') => {
 //   let sum = 0
@@ -20,10 +20,11 @@ const cubes_arr = []
 // }
 
 const toggler = document.querySelector('.onoffswitch-switch')
-toggler.addEventListener('click', () => {
+toggler.addEventListener('click', (e) => {
+  console.log('CLICK TOGGLE', e.target.classList)
   toggler.classList.toggle('img-in-img')
   toggler.classList.toggle('segmentation')
-  createCubeLayers()
+  createCubeLayers(algorithm_arr)
 })
 
 const createCubeLayers = (algorithm_arr) => {
@@ -87,7 +88,7 @@ const createCubeLayers = (algorithm_arr) => {
 
 map_3d().then((res) => {
   console.log('res: ')
-  // let algorithm_arr = [...res].reverse()
+  algorithm_arr = [...res].reverse()
   // console.log('algo arr: ', algorithm_arr)
   createCubeLayers([...res].reverse())
 })
