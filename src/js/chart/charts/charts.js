@@ -195,7 +195,7 @@ const func = data_cansat('both').then((resp) => {
       label: 'rsi',
       color: '484d4d',
       label_string_y: 'rsi',
-      label_string_x: 'time [m]',
+      label_string_x: 'time [s]',
       equal_space: true,
     },
     {
@@ -207,7 +207,7 @@ const func = data_cansat('both').then((resp) => {
       label: 'flux',
       color: 'ff435f',
       label_string_y: 'flux [B]',
-      label_string_x: 'time [m]',
+      label_string_x: 'time [s]',
     },
     {
       type: 'line',
@@ -216,7 +216,7 @@ const func = data_cansat('both').then((resp) => {
       label: 'voltage',
       color: '484d4d',
       label_string_y: 'voltage [V]',
-      label_string_x: 'time [m]',
+      label_string_x: 'time [s]',
     },
   ]
 
