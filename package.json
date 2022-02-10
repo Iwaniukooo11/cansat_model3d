@@ -18,7 +18,7 @@
     "gulp-minify": "^3.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-wait": "0.0.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "three": "^0.112.1",
     "three-orbitcontrols": "^2.110.3",
     "unirest": "^0.6.0",
